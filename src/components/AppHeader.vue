@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="header-main">
     <div class="switch-pages" @mouseenter="showPopover" @mouseleave="delayHidePopover">
       <svg
         width="24"
@@ -91,9 +91,11 @@ const delayHidePopover = () => {
 </script>
 
 <style scoped>
-.main {
+.header-main {
   height: 64px;
   display: flex;
+  top: 0;
+  left: 0;
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
