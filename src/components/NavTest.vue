@@ -1,5 +1,5 @@
 <template>
-  <div class="main" ref="containerRef">
+  <div class="main" ref="navContainer">
     <!-- 独立的高亮指示器（左边框蓝条） -->
     <div class="active-indicator" :style="indicatorStyle"></div>
 
@@ -11,18 +11,19 @@
       @click="handleNavClick(item)"
     >
       <Transition name="icon-switch" mode="out-in">
+        <!-- 必须加key，让Vue识别为不同元素从而触发过渡 -->
         <component
           :key="activeId === item.id ? 'active' : 'normal'"
           :is="activeId === item.id ? item.activeIcon : item.icon"
         />
       </Transition>
+      <!-- <span class="nav-label">{{ item.label }}</span> -->
     </button>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { useElementBounding } from '@vueuse/core'
+import { ref, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import HardwareSVG from '@/assets/icon/HardwareSVG.vue'
 import HardwareSVG2 from '@/assets/icon/HardwareSVG2.vue'
 import SoftwareSVG from '@/assets/icon/SoftwareSVG.vue'
@@ -42,44 +43,68 @@ const navItems = [
   { id: 'system', label: '系统', icon: SystemSVG, activeIcon: SystemSVG2 },
 ]
 
+// 当前高亮项 id
 const activeId = ref(navItems[0].id)
-const containerRef = ref(null)
 
-// 按钮元素引用数组
+// 存储每个按钮的 DOM 元素
 const buttonRefs = ref([])
 const setButtonRef = (el, index) => {
   if (el) buttonRefs.value[index] = el
 }
 
-// 当前激活按钮对应的 DOM 元素
-const activeButtonElement = computed(() => {
-  const idx = navItems.findIndex((item) => item.id === activeId.value)
-  return buttonRefs.value[idx] ?? null
+// 指示器的位置样式
+const indicatorStyle = ref({
+  top: '0px',
+  height: '0px',
 })
 
-// 使用 VueUse 获取按钮和容器的边界信息
-const { top: btnTop, height: btnHeight } = useElementBounding(activeButtonElement)
-const { top: containerTop } = useElementBounding(containerRef)
-
-// 根据响应式边界值计算指示器样式
-const indicatorStyle = computed(() => {
-  if (!btnHeight.value) return { top: '0px', height: '0px' }
-  const h = btnHeight.value * 0.38
-  const relativeTop = btnTop.value - containerTop.value + (btnHeight.value - h) / 2
-  return {
-    top: `${relativeTop}px`,
-    height: `${h}px`,
+// 计算当前激活按钮的位置，更新指示器
+// 更新指示器的位置和尺寸（高度50% + 垂直居中）
+const updateIndicator = () => {
+  const activeIndex = navItems.findIndex((item) => item.id === activeId.value)
+  const activeButton = buttonRefs.value[activeIndex]
+  if (activeButton) {
+    const { offsetTop, offsetHeight } = activeButton
+    const indicatorHeight = offsetHeight * 0.38 // 高度为按钮高度的50%
+    const indicatorTop = offsetTop + (offsetHeight - indicatorHeight) / 2 // 垂直居中
+    indicatorStyle.value = {
+      top: `${indicatorTop}px`,
+      height: `${indicatorHeight}px`,
+    }
   }
+}
+
+// 监听 activeId 变化，更新指示器位置（带动画）
+watch(activeId, async () => {
+  // 等待 DOM 更新（如果有其他变化）
+  await nextTick()
+  updateIndicator()
+})
+
+// 监听窗口大小变化，重新计算位置
+let resizeObserver = null
+onMounted(() => {
+  updateIndicator()
+  // 使用 ResizeObserver 监听容器尺寸变化（更精确）
+  resizeObserver = new ResizeObserver(() => updateIndicator())
+  const container = document.querySelector('.main')
+  if (container) resizeObserver.observe(container)
+  window.addEventListener('resize', updateIndicator)
+})
+
+onBeforeUnmount(() => {
+  if (resizeObserver) resizeObserver.disconnect()
+  window.removeEventListener('resize', updateIndicator)
 })
 
 const handleNavClick = (item) => {
   activeId.value = item.id
+  // 其他业务逻辑（如路由跳转）
   console.log('点击了：', item.label)
 }
 </script>
 
 <style scoped>
-/* 样式部分保持不变 */
 .main {
   width: 60px;
   height: 60px;
@@ -91,6 +116,7 @@ const handleNavClick = (item) => {
   justify-items: center;
 }
 
+/* 左边框蓝条 */
 .active-indicator {
   position: absolute;
   left: 0;
@@ -104,6 +130,7 @@ const handleNavClick = (item) => {
   z-index: 1;
 }
 
+/* 按钮样式 */
 .main button {
   position: relative;
   display: flex;
@@ -126,10 +153,12 @@ const handleNavClick = (item) => {
   background-color: var(--bg-surface);
 }
 
+/* 激活状态按钮样式 */
 .main button.active {
-  background: transparent;
+  background-color: var(--bg-surface);
 }
 
+/* 文字描述样式 - 绝对定位，不占用按钮布局 */
 .nav-label {
   position: absolute;
   left: 0;
@@ -139,12 +168,13 @@ const handleNavClick = (item) => {
   font-size: 11px;
   color: var(--text-secondary, #888);
   line-height: 1.2;
-  pointer-events: none;
+  pointer-events: none; /* 让文字不影响按钮点击 */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 4px;
 }
+
 /* 激活状态的按钮隐藏文字描述 */
 /* .main button.active .nav-label {
   display: none;

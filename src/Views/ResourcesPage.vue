@@ -1,7 +1,15 @@
 <template>
-  <h1>资源...</h1>
+  <AppNav class="nav-left" />
 </template>
 
-<script setup></script>
+<script setup>
+import AppNav from '@/components/AppNav.vue'
+</script>
 
-<style scoped></style>
+<style scoped>
+.nav-left {
+  position: fixed;
+  top: 80px;
+  left: 6px;
+}
+</style>
