@@ -1,6 +1,11 @@
 <template>
   <div class="header-main">
-    <div class="switch-pages" @mouseenter="showPopover" @mouseleave="delayHidePopover">
+    <div
+      class="switch-pages"
+      @mouseenter="showPopover"
+      @mouseleave="delayHidePopover"
+      @click="toggleDrawer"
+    >
       <svg
         width="24"
         height="24"
@@ -36,6 +41,12 @@
       @mouseenter="showPopover"
       @mouseleave="delayHidePopover"
     ></div>
+    <div
+      v-if="!isDesktop"
+      class="switch-pages-drawer"
+      :class="{ show: drawerVisible }"
+      ref="drawerRef"
+    ></div>
 
     <div class="menu-container">
       <button
@@ -56,7 +67,7 @@
 
 <script setup>
 import { ref, onBeforeUnmount } from 'vue'
-import { useBreakpoints, useTimeoutFn } from '@vueuse/core'
+import { useBreakpoints, useTimeoutFn, onClickOutside } from '@vueuse/core'
 
 // ---------- 响应式断点 ----------
 const breakpoints = { mobile: 0, tablet: 768, desktop: 1024 }
@@ -64,6 +75,20 @@ const screens = useBreakpoints(breakpoints)
 const isMobile = screens.smaller('tablet')
 const isTablet = screens.between('mobile', 'desktop')
 const isDesktop = screens.greaterOrEqual('desktop')
+
+const drawerVisible = ref(false)
+const drawerRef = ref(null)
+
+// 点击切换抽屉（只在非桌面端生效）
+const toggleDrawer = () => {
+  if (isDesktop.value) return
+  drawerVisible.value = !drawerVisible.value
+}
+
+// 优雅升级：点击抽屉外部自动关闭
+onClickOutside(drawerRef, () => {
+  drawerVisible.value = false
+})
 
 // 汉堡菜单
 const isMenuOpen = ref(false)
@@ -94,11 +119,21 @@ const delayHidePopover = () => {
 .header-main {
   height: 64px;
   display: flex;
-  top: 0;
-  left: 0;
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
+}
+
+.switch-pages {
+  width: 135px;
+  height: 44px;
+  border-radius: 22px;
+  /* border: 2px solid #3f3f46; */
+  border: 2px solid var(--text-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border 0.2s;
 }
 
 .switch-pages-popover {
@@ -123,24 +158,22 @@ const delayHidePopover = () => {
   visibility: visible;
   opacity: 1;
 }
-
-.switch-pages {
-  width: 135px;
-  height: 44px;
-  border-radius: 22px;
+.switch-pages-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 400px;
+  transform: translateY(100%);
+  border-radius: 22px 22px 0 0;
   border: 2px solid #3f3f46;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: border 0.2s;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  background-color: var(--bg-base);
 }
-
-.switch-pages:hover {
-  border: 2px solid var(--text-primary);
+.switch-pages-drawer.show {
+  transform: translateY(0);
 }
-
-/* 原 CSS 悬停显示规则已移除，改为 JS 控制 */
-
 .switch-pages-span {
   font-size: 14px;
   margin: 0 6px;

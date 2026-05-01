@@ -11,7 +11,6 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 
-// 在 mount 之前添加 dark 类
 // document.documentElement.classList.add('dark')
 
 app.mount('#app')

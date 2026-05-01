@@ -1,5 +1,5 @@
 <template>
-  <AppNav class="nav-left" />
+  <AppNav v-if="isMobile" class="nav-mobile" />
 
   <div class="res-main">
     <button @click="toggleDark" class="theme-toggle">
@@ -11,11 +11,21 @@
 <script setup>
 import AppNav from '@/components/AppNav.vue'
 import { useTheme } from '@/utils/useTheme'
+import { useBreakpoints } from '@vueuse/core'
+
+//主题切换
 const { isDark, toggleDark } = useTheme()
+
+// ---------- 响应式断点 ----------
+const breakpoints = { mobile: 0, tablet: 768, desktop: 1024 }
+const screens = useBreakpoints(breakpoints)
+const isMobile = screens.smaller('tablet')
+const isTablet = screens.between('mobile', 'desktop')
+const isDesktop = screens.greaterOrEqual('desktop')
 </script>
 
 <style scoped>
-.nav-left {
+.nav-mobile {
   position: fixed;
   top: 80px;
   left: 6px;

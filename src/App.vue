@@ -10,4 +10,11 @@
 import AppHeader from '@/components/AppHeader.vue'
 </script>
 
-<style scoped></style>
+<style scoped>
+header {
+  position: fixed;
+  top: 0;
+  left: 16px;
+  right: 16px;
+}
+</style>

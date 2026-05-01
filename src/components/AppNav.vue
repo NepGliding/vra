@@ -1,5 +1,5 @@
 <template>
-  <div class="main" ref="containerRef">
+  <div class="nav-mobile-main" ref="containerRef">
     <!-- 独立的高亮指示器（左边框蓝条） -->
     <div class="active-indicator" :style="indicatorStyle"></div>
 
@@ -79,8 +79,7 @@ const handleNavClick = (item) => {
 </script>
 
 <style scoped>
-/* 样式部分保持不变 */
-.main {
+.nav-mobile-main {
   width: 60px;
   height: 60px;
   position: relative;
@@ -104,7 +103,7 @@ const handleNavClick = (item) => {
   z-index: 1;
 }
 
-.main button {
+.nav-mobile-main button {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -122,11 +121,11 @@ const handleNavClick = (item) => {
   z-index: 0;
 }
 
-.main button:hover {
+.nav-mobile-main button:hover {
   background-color: var(--bg-surface);
 }
 
-.main button.active {
+.nav-mobile-main button.active {
   background: transparent;
 }
 
