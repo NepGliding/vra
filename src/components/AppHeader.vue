@@ -2,6 +2,7 @@
   <div class="header-main">
     <div
       class="switch-other"
+      ref="switchOtherRef"
       @mouseenter="showPopover"
       @mouseleave="delayHidePopover"
       @click="toggleDrawer"
@@ -37,6 +38,7 @@
     <div
       v-if="isDesktop"
       class="switch-other-popover"
+      ref="popoverRef"
       :class="{ show: popoverVisible }"
       @mouseenter="showPopover"
       @mouseleave="delayHidePopover"
@@ -47,7 +49,8 @@
       :class="{ show: drawerVisible }"
       ref="drawerRef"
     ></div>
-    <div class="menu-container" ref="menuContainerRef">
+
+    <div v-if="!isDesktop" class="menu-container" ref="menuContainerRef">
       <button
         class="hamburger"
         :class="{ active: isMenuOpen }"
@@ -61,14 +64,41 @@
       </button>
     </div>
     <div v-if="!isDesktop" class="menu-full-mask" :class="{ show: isMenuOpen }" ref="menuMaskRef">
-      <h1>测试</h1>
+      <button
+        v-for="item in navItems"
+        :key="item.path"
+        :class="{ 'page-btn-active': route.path === item.path }"
+        @click="router.push(item.path)"
+      >
+        {{ item.name }}
+      </button>
+    </div>
+    <div v-if="isDesktop" class="button-group">
+      <button
+        v-for="item in navItems"
+        :key="item.path"
+        :class="{ 'page-btn-active': route.path === item.path }"
+        @click="router.push(item.path)"
+      >
+        {{ item.name }}
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useBreakpoints, useTimeoutFn, onClickOutside } from '@vueuse/core'
+
+const router = useRouter()
+const route = useRoute()
+
+const navItems = [
+  { path: '/', name: '资源页' },
+  { path: '/article', name: '文章页' },
+  { path: '/interesting', name: ' Interesting ' },
+]
 
 // ---------- 响应式断点 ----------
 const breakpoints = { mobile: 0, tablet: 768, desktop: 1024 }
@@ -165,7 +195,7 @@ onClickOutside(
   visibility: hidden;
   opacity: 0;
   transition: all 0.38s ease;
-  z-index: 105;
+  z-index: 99;
   background-color: var(--bg-base);
 }
 
@@ -256,6 +286,11 @@ onClickOutside(
 
 .hamburger.active .hamburger__line:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
+}
+
+.page-btn-active {
+  color: red;
+  /* 其他激活样式 */
 }
 
 @media (width>=1024px) {

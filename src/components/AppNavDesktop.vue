@@ -71,7 +71,6 @@ const handleNavClick = (item) => {
     background-color 0.2s ease,
     box-shadow 0.2s ease;
   border-radius: 24px;
-  z-index: 0;
 }
 
 .nav-desktop-main button:hover {

@@ -1,13 +1,13 @@
 <template>
-  <div class="article-main">
-    <h1>文章...</h1>
+  <div class="api-main">
+    <h1>API...</h1>
   </div>
 </template>
 
 <script setup></script>
 
 <style scoped>
-.article-main {
+.api-main {
   height: 1024px;
   width: 100vw;
 }
