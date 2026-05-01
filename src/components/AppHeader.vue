@@ -47,7 +47,6 @@
       :class="{ show: drawerVisible }"
       ref="drawerRef"
     ></div>
-
     <div class="menu-container" ref="menuContainerRef">
       <button
         class="hamburger"
@@ -61,12 +60,7 @@
         <div class="hamburger__line"></div>
       </button>
     </div>
-    <div
-      v-if="!isDesktop"
-      class="menu-container-drawer"
-      :class="{ show: isMenuOpen }"
-      ref="menuDrawerRef"
-    >
+    <div v-if="!isDesktop" class="menu-full-mask" :class="{ show: isMenuOpen }" ref="menuMaskRef">
       <h1>测试</h1>
     </div>
   </div>
@@ -79,8 +73,8 @@ import { useBreakpoints, useTimeoutFn, onClickOutside } from '@vueuse/core'
 // ---------- 响应式断点 ----------
 const breakpoints = { mobile: 0, tablet: 768, desktop: 1024 }
 const screens = useBreakpoints(breakpoints)
-const isMobile = screens.smaller('tablet')
-const isTablet = screens.between('mobile', 'desktop')
+// const isMobile = screens.smaller('tablet')
+// const isTablet = screens.between('mobile', 'desktop')
 const isDesktop = screens.greaterOrEqual('desktop')
 
 const drawerVisible = ref(false)
@@ -91,23 +85,45 @@ const toggleDrawer = () => {
   if (isDesktop.value) return
   drawerVisible.value = !drawerVisible.value
 }
+
 onClickOutside(drawerRef, () => {
   drawerVisible.value = false
 })
-// 汉堡菜单
+
+//Other弹窗悬停时弹出盒子（只在桌面端生效）
+const popoverVisible = ref(false)
+const { start: startHideTimer, stop: stopHideTimer } = useTimeoutFn(() => {
+  popoverVisible.value = false
+}, 150)
+
+const showPopover = () => {
+  if (!isDesktop.value) return
+  stopHideTimer()
+  popoverVisible.value = true
+}
+
+const delayHidePopover = () => {
+  if (!isDesktop.value) return
+  startHideTimer()
+}
+
+// 汉堡菜单（只在移动端生效）
 const isMenuOpen = ref(false)
 const isToggling = ref(false)
+
 const toggleMenu = () => {
   if (isToggling.value) return
   isToggling.value = true
   isMenuOpen.value = !isMenuOpen.value
   setTimeout(() => (isToggling.value = false), 300)
 }
+
 //汉堡菜单抽屉（只在移动端生效）
-const menuDrawerRef = ref(null)
+const menuMaskRef = ref(null)
 const menuContainerRef = ref(null)
+
 onClickOutside(
-  menuDrawerRef,
+  menuMaskRef,
   () => {
     isMenuOpen.value = false
   },
@@ -115,21 +131,6 @@ onClickOutside(
     ignore: [menuContainerRef],
   },
 )
-
-//弹窗悬停控制（只在桌面端生效）
-const popoverVisible = ref(false)
-const { start: startHideTimer, stop: stopHideTimer } = useTimeoutFn(() => {
-  popoverVisible.value = false
-}, 150)
-const showPopover = () => {
-  if (!isDesktop.value) return
-  stopHideTimer()
-  popoverVisible.value = true
-}
-const delayHidePopover = () => {
-  if (!isDesktop.value) return
-  startHideTimer()
-}
 </script>
 
 <style scoped>
@@ -168,13 +169,13 @@ const delayHidePopover = () => {
   background-color: var(--bg-base);
 }
 
-/* 显示状态 */
 .switch-other-popover.show {
   width: 320px;
   height: 320px;
   visibility: visible;
   opacity: 1;
 }
+
 .switch-other-drawer {
   position: fixed;
   bottom: 0;
@@ -188,9 +189,11 @@ const delayHidePopover = () => {
   z-index: 100;
   background-color: var(--bg-base);
 }
+
 .switch-other-drawer.show {
   transform: translateY(0);
 }
+
 .switch-other-span {
   font-size: 14px;
   margin: 0 6px;
@@ -203,22 +206,24 @@ const delayHidePopover = () => {
   z-index: 999;
 }
 
-.menu-container-drawer {
+.menu-full-mask {
   position: fixed;
   top: 0;
-  right: 0;
-  width: 100%;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.4s ease;
   z-index: 100;
   background-color: var(--bg-base);
   box-sizing: border-box;
   overflow-x: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.menu-container-drawer.show {
-  transform: translateX(0);
+.menu-full-mask.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .hamburger {

@@ -16,9 +16,9 @@ import AppHeader from '@/components/AppHeader.vue'
   top: 0;
   left: 16px;
   right: 16px;
-  z-index: 99;
+  z-index: 10;
 }
 .main-center {
-  z-index: 5;
+  z-index: 1;
 }
 </style>

@@ -14,7 +14,7 @@
 }
 
 .dark {
-  --bg-base: #09090b;
+  /* --bg-base: #09090b; */
   --bg-base: #0a0a0a;
   --bg-surface: #2d2d2d;
   --bg-sidebar: #18181b;
@@ -29,9 +29,6 @@ body {
   color: var(--text-primary);
   margin: 0;
   padding: 0;
-}
-
-body {
   min-height: 100vh;
 }
 

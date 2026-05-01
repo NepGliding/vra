@@ -28,7 +28,6 @@ const isDesktop = screens.greaterOrEqual('desktop')
   position: fixed;
   top: 80px;
   left: 6px;
-  z-index: 95;
 }
 .nav-desktop {
   width: 564px;
@@ -36,6 +35,7 @@ const isDesktop = screens.greaterOrEqual('desktop')
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 999;
 }
 .res-main {
   height: 1024px;
