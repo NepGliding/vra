@@ -11,11 +11,11 @@
   --bg-hover: #0078d4;
   --text-primary: #202020;
   --text-secondary: #3f3f46;
-  --text-thirdary: #fafafa;
 }
 
 .dark {
   --bg-base: #09090b;
+  --bg-base: #0a0a0a;
   --bg-surface: #2d2d2d;
   --bg-sidebar: #18181b;
   --bg-hover: #4cc2ff;

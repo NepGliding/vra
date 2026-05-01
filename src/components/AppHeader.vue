@@ -48,7 +48,7 @@
       ref="drawerRef"
     ></div>
 
-    <div class="menu-container">
+    <div class="menu-container" ref="menuContainerRef">
       <button
         class="hamburger"
         :class="{ active: isMenuOpen }"
@@ -60,7 +60,14 @@
         <div class="hamburger__line"></div>
         <div class="hamburger__line"></div>
       </button>
-      <div class="menu-container-drawer"></div>
+    </div>
+    <div
+      v-if="!isDesktop"
+      class="menu-container-drawer"
+      :class="{ show: isMenuOpen }"
+      ref="menuDrawerRef"
+    >
+      <h1>测试</h1>
     </div>
   </div>
 </template>
@@ -79,13 +86,7 @@ const isDesktop = screens.greaterOrEqual('desktop')
 const drawerVisible = ref(false)
 const drawerRef = ref(null)
 
-// 汉堡菜单
-const isMenuOpen = ref(false)
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
-
-// 抽屉（只在非桌面端生效）
+// Other抽屉（只在移动端生效）
 const toggleDrawer = () => {
   if (isDesktop.value) return
   drawerVisible.value = !drawerVisible.value
@@ -93,22 +94,41 @@ const toggleDrawer = () => {
 onClickOutside(drawerRef, () => {
   drawerVisible.value = false
 })
+// 汉堡菜单
+const isMenuOpen = ref(false)
+const isToggling = ref(false)
+const toggleMenu = () => {
+  if (isToggling.value) return
+  isToggling.value = true
+  isMenuOpen.value = !isMenuOpen.value
+  setTimeout(() => (isToggling.value = false), 300)
+}
+//汉堡菜单抽屉（只在移动端生效）
+const menuDrawerRef = ref(null)
+const menuContainerRef = ref(null)
+onClickOutside(
+  menuDrawerRef,
+  () => {
+    isMenuOpen.value = false
+  },
+  {
+    ignore: [menuContainerRef],
+  },
+)
 
-//弹窗悬停控制
+//弹窗悬停控制（只在桌面端生效）
 const popoverVisible = ref(false)
 const { start: startHideTimer, stop: stopHideTimer } = useTimeoutFn(() => {
   popoverVisible.value = false
 }, 150)
-// 显示弹窗（清除任何待执行的隐藏定时器）
 const showPopover = () => {
   if (!isDesktop.value) return
   stopHideTimer()
   popoverVisible.value = true
 }
-// 延迟隐藏（启动隐藏定时器）
 const delayHidePopover = () => {
   if (!isDesktop.value) return
-  startHideTimer() // 若之前有定时器会自动重置
+  startHideTimer()
 }
 </script>
 
@@ -144,7 +164,7 @@ const delayHidePopover = () => {
   visibility: hidden;
   opacity: 0;
   transition: all 0.38s ease;
-  z-index: 100;
+  z-index: 105;
   background-color: var(--bg-base);
 }
 
@@ -166,7 +186,6 @@ const delayHidePopover = () => {
   border: 2px solid #3f3f46;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
-
   background-color: var(--bg-base);
 }
 .switch-other-drawer.show {
@@ -180,6 +199,26 @@ const delayHidePopover = () => {
 .menu-container {
   width: 30px;
   height: 30px;
+  position: relative;
+  z-index: 999;
+}
+
+.menu-container-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  background-color: var(--bg-base);
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.menu-container-drawer.show {
+  transform: translateX(0);
 }
 
 .hamburger {
