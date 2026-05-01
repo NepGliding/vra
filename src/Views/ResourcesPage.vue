@@ -2,7 +2,7 @@
   <AppNavMobile v-if="!isDesktop" class="nav-mobile" />
   <AppNavDesktop v-if="isDesktop" class="nav-desktop" />
   <div class="res-main">
-    <button @click="toggleDark" class="theme-toggle">测试用{{ isDark ? '☀️' : '🌙' }}</button>
+    <button @click="toggleDark" class="theme-toggle">调试切换主题{{ isDark ? '☀️' : '🌙' }}</button>
   </div>
 </template>
 
@@ -43,6 +43,6 @@ const isDesktop = screens.greaterOrEqual('desktop')
 .theme-toggle {
   position: absolute;
   top: 100px;
-  right: 300px;
+  right: 50%;
 }
 </style>

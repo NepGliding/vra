@@ -66,16 +66,16 @@ const handleNavClick = (item) => {
   padding: 8px 4px;
   width: 100px;
   height: 38px;
+  box-shadow: 0 0 0 1px gray;
   transition:
-    background-color 0.2s,
-    border 0.2s;
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
   border-radius: 24px;
-  border: 1px solid #46433f;
   z-index: 0;
 }
 
 .nav-desktop-main button:hover {
-  border: 2px solid var(--text-primary);
+  box-shadow: 0 0 0 2px var(--text-primary);
 }
 .nav-desktop-main button.active {
   background-color: var(--text-primary);
