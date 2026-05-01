@@ -1,7 +1,7 @@
 <template>
   <div class="header-main">
     <div
-      class="switch-pages"
+      class="switch-other"
       @mouseenter="showPopover"
       @mouseleave="delayHidePopover"
       @click="toggleDrawer"
@@ -21,7 +21,7 @@
           stroke-linejoin="round"
         />
       </svg>
-      <span class="switch-pages-span">切换页面</span>
+      <span class="switch-other-span"> Other </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -36,14 +36,14 @@
     </div>
     <div
       v-if="isDesktop"
-      class="switch-pages-popover"
+      class="switch-other-popover"
       :class="{ show: popoverVisible }"
       @mouseenter="showPopover"
       @mouseleave="delayHidePopover"
     ></div>
     <div
       v-if="!isDesktop"
-      class="switch-pages-drawer"
+      class="switch-other-drawer"
       :class="{ show: drawerVisible }"
       ref="drawerRef"
     ></div>
@@ -66,7 +66,7 @@
 </template>
 
 <script setup>
-import { ref, onBeforeUnmount } from 'vue'
+import { ref } from 'vue'
 import { useBreakpoints, useTimeoutFn, onClickOutside } from '@vueuse/core'
 
 // ---------- 响应式断点 ----------
@@ -79,22 +79,20 @@ const isDesktop = screens.greaterOrEqual('desktop')
 const drawerVisible = ref(false)
 const drawerRef = ref(null)
 
-// 点击切换抽屉（只在非桌面端生效）
-const toggleDrawer = () => {
-  if (isDesktop.value) return
-  drawerVisible.value = !drawerVisible.value
-}
-
-// 优雅升级：点击抽屉外部自动关闭
-onClickOutside(drawerRef, () => {
-  drawerVisible.value = false
-})
-
 // 汉堡菜单
 const isMenuOpen = ref(false)
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
+
+// 抽屉（只在非桌面端生效）
+const toggleDrawer = () => {
+  if (isDesktop.value) return
+  drawerVisible.value = !drawerVisible.value
+}
+onClickOutside(drawerRef, () => {
+  drawerVisible.value = false
+})
 
 //弹窗悬停控制
 const popoverVisible = ref(false)
@@ -107,7 +105,6 @@ const showPopover = () => {
   stopHideTimer()
   popoverVisible.value = true
 }
-
 // 延迟隐藏（启动隐藏定时器）
 const delayHidePopover = () => {
   if (!isDesktop.value) return
@@ -122,43 +119,43 @@ const delayHidePopover = () => {
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
+  background-color: var(--bg-base);
 }
 
-.switch-pages {
+.switch-other {
   width: 135px;
   height: 44px;
   border-radius: 22px;
-  /* border: 2px solid #3f3f46; */
-  border: 2px solid var(--text-secondary);
+  border: 2px solid #46433f;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: border 0.2s;
 }
 
-.switch-pages-popover {
+.switch-other-popover {
   position: fixed;
   top: 10px;
   left: 16px;
   width: 135px;
   height: 44px;
   border-radius: 22px;
-  border: 2px solid #3f3f46;
+  border: 2px solid #46433f;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.4s ease;
-  z-index: 999;
+  transition: all 0.38s ease;
+  z-index: 100;
   background-color: var(--bg-base);
 }
 
 /* 显示状态 */
-.switch-pages-popover.show {
+.switch-other-popover.show {
   width: 320px;
   height: 320px;
   visibility: visible;
   opacity: 1;
 }
-.switch-pages-drawer {
+.switch-other-drawer {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -168,13 +165,14 @@ const delayHidePopover = () => {
   border-radius: 22px 22px 0 0;
   border: 2px solid #3f3f46;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 999;
+  z-index: 100;
+
   background-color: var(--bg-base);
 }
-.switch-pages-drawer.show {
+.switch-other-drawer.show {
   transform: translateY(0);
 }
-.switch-pages-span {
+.switch-other-span {
   font-size: 14px;
   margin: 0 6px;
 }
@@ -214,5 +212,12 @@ const delayHidePopover = () => {
 
 .hamburger.active .hamburger__line:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (width>=1024px) {
+  .switch-other {
+    width: 120px;
+    height: 42px;
+  }
 }
 </style>

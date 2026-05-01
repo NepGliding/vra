@@ -1,15 +1,14 @@
 <template>
-  <AppNav v-if="isMobile" class="nav-mobile" />
-
+  <AppNavMobile v-if="!isDesktop" class="nav-mobile" />
+  <AppNavDesktop v-if="isDesktop" class="nav-desktop" />
   <div class="res-main">
-    <button @click="toggleDark" class="theme-toggle">
-      {{ isDark ? '☀️' : '🌙' }}
-    </button>
+    <button @click="toggleDark" class="theme-toggle">测试用{{ isDark ? '☀️' : '🌙' }}</button>
   </div>
 </template>
 
 <script setup>
-import AppNav from '@/components/AppNav.vue'
+import AppNavMobile from '@/components/AppNavMobile.vue'
+import AppNavDesktop from '@/components/AppNavDesktop.vue'
 import { useTheme } from '@/utils/useTheme'
 import { useBreakpoints } from '@vueuse/core'
 
@@ -30,15 +29,21 @@ const isDesktop = screens.greaterOrEqual('desktop')
   top: 80px;
   left: 6px;
 }
+.nav-desktop {
+  width: 564px;
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
 .res-main {
-  width: 100vw;
   height: 1024px;
-  /* background: #aaeeface; */
-  padding: 16px 60px;
+  /* margin: 60px 16vw; */
 }
 .theme-toggle {
   position: absolute;
   top: 100px;
-  right: 60px;
+  right: 300px;
 }
 </style>
