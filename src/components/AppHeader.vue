@@ -63,12 +63,18 @@
         <div class="hamburger__line"></div>
       </button>
     </div>
-    <div v-if="!isDesktop" class="menu-full-mask" :class="{ show: isMenuOpen }" ref="menuMaskRef">
+    <div
+      v-if="!isDesktop"
+      class="menu-full-mask"
+      :class="{ show: isMenuOpen }"
+      ref="menuMaskRef"
+      @click.self="isMenuOpen = false"
+    >
       <button
         v-for="item in navItems"
         :key="item.path"
         :class="{ 'page-btn-active': route.path === item.path }"
-        @click="router.push(item.path)"
+        @click="handleNavClick(item.path)"
       >
         {{ item.name }}
       </button>
@@ -87,7 +93,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useBreakpoints, useTimeoutFn, onClickOutside } from '@vueuse/core'
 
@@ -107,15 +113,13 @@ const screens = useBreakpoints(breakpoints)
 // const isTablet = screens.between('mobile', 'desktop')
 const isDesktop = screens.greaterOrEqual('desktop')
 
+// Other抽屉（只在移动端生效）
 const drawerVisible = ref(false)
 const drawerRef = ref(null)
-
-// Other抽屉（只在移动端生效）
 const toggleDrawer = () => {
   if (isDesktop.value) return
   drawerVisible.value = !drawerVisible.value
 }
-
 onClickOutside(drawerRef, () => {
   drawerVisible.value = false
 })
@@ -125,13 +129,11 @@ const popoverVisible = ref(false)
 const { start: startHideTimer, stop: stopHideTimer } = useTimeoutFn(() => {
   popoverVisible.value = false
 }, 150)
-
 const showPopover = () => {
   if (!isDesktop.value) return
   stopHideTimer()
   popoverVisible.value = true
 }
-
 const delayHidePopover = () => {
   if (!isDesktop.value) return
   startHideTimer()
@@ -148,19 +150,28 @@ const toggleMenu = () => {
   setTimeout(() => (isToggling.value = false), 300)
 }
 
-//汉堡菜单抽屉（只在移动端生效）
-const menuMaskRef = ref(null)
-const menuContainerRef = ref(null)
+//汉堡菜单全屏遮罩（只在移动端生效）
+//点击遮罩外部触发关闭遮罩
+// const menuMaskRef = ref(null)
+// const menuContainerRef = ref(null)
+// onClickOutside(
+//   menuMaskRef,
+//   () => {
+//     isMenuOpen.value = false
+//   },
+//   {
+//     ignore: [menuContainerRef],
+//   },
+// )
 
-onClickOutside(
-  menuMaskRef,
-  () => {
-    isMenuOpen.value = false
-  },
-  {
-    ignore: [menuContainerRef],
-  },
-)
+const handleNavClick = (path) => {
+  // 先关闭菜单
+  isMenuOpen.value = false
+  // 等待 Vue 完成 DOM 更新后再跳转
+  nextTick(() => {
+    router.push(path)
+  })
+}
 </script>
 
 <style scoped>
