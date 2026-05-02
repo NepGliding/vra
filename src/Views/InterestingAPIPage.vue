@@ -1,6 +1,6 @@
 <template>
   <div class="api-main">
-    <h1>API...</h1>
+    <div>API测试...</div>
   </div>
 </template>
 
@@ -9,6 +9,7 @@
 <style scoped>
 .api-main {
   height: 1024px;
-  width: 100vw;
+  width: 100%;
+  box-sizing: border-box;
 }
 </style>

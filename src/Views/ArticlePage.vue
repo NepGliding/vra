@@ -1,6 +1,6 @@
 <template>
   <div class="article-main">
-    <h1>文章...</h1>
+    <div>文章测试...</div>
   </div>
 </template>
 
@@ -8,7 +8,8 @@
 
 <style scoped>
 .article-main {
-  height: 1024px;
-  width: 100vw;
+  height: 2024px;
+  width: 100%;
+  box-sizing: border-box;
 }
 </style>

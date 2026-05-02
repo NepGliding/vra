@@ -35,10 +35,10 @@ const isDesktop = screens.greaterOrEqual('desktop')
 .nav-desktop {
   width: 564px;
   position: fixed;
-  top: 16px;
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 99;
+  z-index: 999;
 }
 
 .theme-toggle {
