@@ -1,5 +1,6 @@
 <template>
   <div class="header-main">
+    <button @click="toggleDark" class="theme-toggle">切换主题调试{{ isDark ? '☀️' : '🌙' }}</button>
     <div
       class="switch-other"
       ref="switchOtherRef"
@@ -80,18 +81,19 @@
         {{ item.name }}
       </button>
     </div>
-    <div class="perch-btn-desktop">
-      <div v-if="isDesktop" class="button-group">
+    <div v-if="isDesktop" class="perch-btn-desktop">
+      <div class="button-group">
+        <!-- 高亮指示器元素 -->
+        <div class="active-indicator" :style="indicatorStyle"></div>
         <button
-          v-for="item in navItems"
+          v-for="(item, index) in navItems"
           :key="item.path"
+          :ref="(el) => setButtonRef(el, index)"
           class="page-btn-desktop"
           :class="{ 'page-btn-active': route.path === item.path }"
           @click="router.push(item.path)"
         >
           {{ item.name }}
-          <div class="inverted-v"></div>
-          <!-- <span class="inverted-v"></span> -->
         </button>
       </div>
     </div>
@@ -99,7 +101,7 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useBreakpoints, useTimeoutFn, onClickOutside } from '@vueuse/core'
 
@@ -118,6 +120,10 @@ const screens = useBreakpoints(breakpoints)
 // const isMobile = screens.smaller('tablet')
 // const isTablet = screens.between('mobile', 'desktop')
 const isDesktop = screens.greaterOrEqual('desktop')
+
+import { useTheme } from '@/utils/useTheme'
+//主题切换
+const { isDark, toggleDark } = useTheme()
 
 // Other抽屉（只在移动端生效）
 const drawerVisible = ref(false)
@@ -178,6 +184,33 @@ const handleNavClick = (path) => {
     router.push(path)
   })
 }
+
+// 桌面端按钮高亮指示器逻辑
+const buttonRefs = ref([])
+const setButtonRef = (el, index) => {
+  if (el) buttonRefs.value[index] = el
+}
+
+// 动态计算指示器的位置和样式
+const indicatorStyle = computed(() => {
+  const activeIndex = navItems.findIndex((item) => item.path === route.path)
+  if (activeIndex === -1 || !buttonRefs.value[activeIndex]) return {}
+
+  const activeButton = buttonRefs.value[activeIndex]
+  // 👇 在这里修改你想要的指示器高度，比如改成20、28都可以
+  const indicatorHeight = 18
+
+  return {
+    // 自动计算垂直居中的top位置
+    top: `${activeButton.offsetTop + (activeButton.offsetHeight - indicatorHeight) / 2}px`,
+    height: `${indicatorHeight}px`, // 固定高度
+    right: '16px',
+    width: '4px',
+    backgroundColor: 'var(--text-primary)',
+    borderRadius: '2px', // 如果高度改小，可以把圆角也对应调小，比如改成1px
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  }
+})
 </script>
 
 <style scoped>
@@ -188,6 +221,13 @@ const handleNavClick = (path) => {
   align-items: center;
   padding: 16px 0;
   background-color: var(--bg-base);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 80px;
+  right: 10%;
+  color: var(--text-primary);
 }
 
 .switch-other {
@@ -322,7 +362,7 @@ const handleNavClick = (path) => {
 }
 
 .perch-btn-desktop {
-  width: 190px;
+  width: 210px;
   height: 180px;
   position: fixed;
   top: 16px;
@@ -341,39 +381,26 @@ const handleNavClick = (path) => {
   text-align: right;
   padding: 0 48px;
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .page-btn-desktop:hover {
   color: var(--text-primary);
 }
 
-.inverted-v {
-  position: relative;
-  right: -28px;
-}
-
-/* 把 transition 写在 :after 初始状态上！ */
-.inverted-v:after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-  /* 必须给一个初始边框颜色，否则无法过渡 */
-  border-left: 2px solid transparent;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s ease; /* 过渡写在这里 */
-  -webkit-transform: translate(0, -50%) rotate(-135deg);
-  transform: translate(0, -50%) rotate(-135deg);
-}
-
-.page-btn-desktop:hover .inverted-v:after {
-  border-color: var(--text-primary);
-}
-
 .page-btn-active {
   color: var(--text-primary);
+}
+
+/* 按钮组添加相对定位，让指示器绝对定位生效 */
+.perch-btn-desktop .button-group {
+  position: relative;
+}
+
+.active-indicator {
+  position: absolute;
+  pointer-events: none; /* 防止指示器阻挡按钮点击 */
+  z-index: 1;
 }
 
 @media (width>=1024px) {

@@ -66,10 +66,10 @@ const handleNavClick = (item) => {
   padding: 8px 4px;
   width: 100px;
   height: 38px;
-  box-shadow: 0 0 0 1px gray;
+  box-shadow: 0 0 0 2px gray;
   transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
   border-radius: 24px;
 }
 
