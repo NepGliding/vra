@@ -9,8 +9,9 @@
   --bg-surface: #ffffff;
   --bg-sidebar: rgba(243, 243, 243, 0.8);
   --bg-hover: #0078d4;
-  --text-primary: #202020;
-  --text-secondary: #3f3f46;
+  --text-primary: #000000;
+  --text-secondary: #757575;
+  --el-active: #0078d4;
 }
 
 .dark {
@@ -21,6 +22,7 @@
   --bg-hover: #4cc2ff;
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
+  --el-active: #4cc2ff;
 }
 
 html,
@@ -34,4 +36,20 @@ body {
 
 #app {
   color: var(--text-primary);
+}
+
+button {
+  border: none; /* 去掉边框 */
+  outline: none; /* 去掉选中轮廓 */
+  background-color: transparent; /* 去掉背景色 */
+  -webkit-appearance: none; /* 移除WebKit默认样式 */
+  -moz-appearance: none; /* 移除Firefox默认样式 */
+  appearance: none; /* 标准属性 */
+}
+
+button:focus,
+button:active {
+  outline: none; /* 防止点击后出现轮廓 */
+  box-shadow: none; /* 去掉阴影变化 */
+  background-color: transparent; /* 点击时不变色，可自定义 */
 }

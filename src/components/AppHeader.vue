@@ -73,21 +73,27 @@
       <button
         v-for="item in navItems"
         :key="item.path"
+        class="page-btn-mobile"
         :class="{ 'page-btn-active': route.path === item.path }"
         @click="handleNavClick(item.path)"
       >
         {{ item.name }}
+        <span>—</span>
       </button>
     </div>
-    <div v-if="isDesktop" class="button-group">
-      <button
-        v-for="item in navItems"
-        :key="item.path"
-        :class="{ 'page-btn-active': route.path === item.path }"
-        @click="router.push(item.path)"
-      >
-        {{ item.name }}
-      </button>
+    <div class="perch-btn-desktop">
+      <div v-if="isDesktop" class="button-group">
+        <button
+          v-for="item in navItems"
+          :key="item.path"
+          class="page-btn-desktop"
+          :class="{ 'page-btn-active': route.path === item.path }"
+          @click="router.push(item.path)"
+        >
+          {{ item.name }}
+          <span>—</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -103,7 +109,7 @@ const route = useRoute()
 const navItems = [
   { path: '/', name: '资源页' },
   { path: '/article', name: '文章页' },
-  { path: '/interesting', name: ' Interesting ' },
+  { path: '/interesting', name: ' Interesting' },
 ]
 
 // ---------- 响应式断点 ----------
@@ -299,9 +305,40 @@ const handleNavClick = (path) => {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+.page-btn-mobile {
+  width: 100%;
+  height: 62px;
+  position: relative;
+  top: 28%;
+  left: 0;
+  font-size: 24px;
+  background: transparent;
+  color: var(--text-secondary);
+  text-align: right;
+  padding-right: 32px;
+}
+
+.perch-btn-desktop {
+  width: 150px;
+  position: fixed;
+  top: 32px;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  text-align: right;
+}
+.page-btn-desktop {
+  height: 5%;
+  height: 40px;
+  font-size: 20px;
+  background: transparent;
+  color: var(--text-secondary);
+  text-align: right;
+  padding-right: 16px;
+}
+
 .page-btn-active {
-  color: red;
-  /* 其他激活样式 */
+  color: var(--text-primary);
 }
 
 @media (width>=1024px) {

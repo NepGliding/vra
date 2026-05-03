@@ -13,7 +13,7 @@
 import AppHeader from '@/components/AppHeader.vue'
 import { useViewTransitionRouter } from '@/utils/useViewTransitionRouter'
 
-// 一行代码启用 View Transitions 路由过渡
+// 启用 View Transitions 路由过渡
 useViewTransitionRouter()
 </script>
 
