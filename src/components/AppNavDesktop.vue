@@ -82,6 +82,7 @@ const handleNavClick = (item) => {
 .nav-label {
   text-align: center;
   font-size: 14px;
+  font-weight: 600;
   color: var(--text-secondary);
   pointer-events: none;
   white-space: nowrap;

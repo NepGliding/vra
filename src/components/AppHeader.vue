@@ -217,8 +217,8 @@ const handleNavClick = (path) => {
 }
 
 .switch-other-popover.show {
-  width: 320px;
-  height: 240px;
+  width: 300px;
+  height: 300px;
   visibility: visible;
   opacity: 1;
 }
@@ -228,7 +228,7 @@ const handleNavClick = (path) => {
   bottom: 0px;
   left: 8px;
   right: 8px;
-  height: 400px;
+  height: 350px;
   transform: translateY(100%);
   border-radius: 22px;
   border: 2px solid #3f3f46;
@@ -239,11 +239,12 @@ const handleNavClick = (path) => {
 
 .switch-other-drawer.show {
   transform: translateY(0);
-  bottom: 8px;
+  bottom: 5px;
 }
 
 .switch-other-span {
   font-size: 14px;
+  font-weight: bold;
   margin: 0 6px;
 }
 
@@ -313,6 +314,7 @@ const handleNavClick = (path) => {
   top: 28%;
   left: 0;
   font-size: 24px;
+  font-weight: bold;
   background: transparent;
   color: var(--text-secondary);
   text-align: right;
@@ -326,7 +328,6 @@ const handleNavClick = (path) => {
   top: 16px;
   right: 0;
   text-align: right;
-  /* padding-right: 32px; */
 }
 
 .page-btn-desktop {
@@ -334,6 +335,7 @@ const handleNavClick = (path) => {
   width: 100%;
   height: 45px;
   font-size: 20px;
+  font-weight: bold;
   background: transparent;
   color: var(--text-secondary);
   text-align: right;
@@ -367,7 +369,6 @@ const handleNavClick = (path) => {
 }
 
 .page-btn-desktop:hover .inverted-v:after {
-  /* hover 只改颜色 */
   border-color: var(--text-primary);
 }
 
