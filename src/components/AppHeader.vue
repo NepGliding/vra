@@ -23,7 +23,7 @@
           stroke-linejoin="round"
         />
       </svg>
-      <span class="switch-other-span"> A Vite App </span>
+      <span class="switch-other-span">Just a Vite App </span>
       <!-- <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -186,28 +186,24 @@ const handleNavClick = (path) => {
   })
 }
 
-// 桌面端按钮高亮指示器逻辑
+// 桌面端按钮高亮指示器
 const buttonRefs = ref([])
 const setButtonRef = (el, index) => {
   if (el) buttonRefs.value[index] = el
 }
-
 // 动态计算指示器的位置和样式
 const indicatorStyle = computed(() => {
   const activeIndex = navItems.findIndex((item) => item.path === route.path)
   if (activeIndex === -1 || !buttonRefs.value[activeIndex]) return {}
-
   const activeButton = buttonRefs.value[activeIndex]
-  // 👇 在这里修改你想要的指示器高度，比如改成20、28都可以
   const indicatorHeight = 18
-
   return {
     // 自动计算垂直居中的top位置
     top: `${activeButton.offsetTop + (activeButton.offsetHeight - indicatorHeight) / 2}px`,
     height: `${indicatorHeight}px`, // 固定高度
     right: '16px',
     width: '4px',
-    backgroundColor: 'var(--text-primary)',
+    backgroundColor: 'var(--bg-hover)',
     borderRadius: '2px', // 如果高度改小，可以把圆角也对应调小，比如改成1px
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   }
@@ -222,7 +218,7 @@ const indicatorStyle = computed(() => {
   align-items: center;
   padding: 16px 0;
   background-color: var(--bg-base);
-  border-bottom: 1px solid #46433f83;
+  box-shadow: 0 1px 0 0 #46433f83;
 }
 
 .theme-toggle {
@@ -233,7 +229,7 @@ const indicatorStyle = computed(() => {
 }
 
 .switch-other {
-  width: 135px;
+  width: 150px;
   height: 44px;
   border-radius: 22px;
   /* border: 2px solid #46433f; */
@@ -322,7 +318,7 @@ const indicatorStyle = computed(() => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
   z-index: 100;
   background-color: var(--bg-base);
   box-sizing: border-box;
@@ -408,8 +404,8 @@ const indicatorStyle = computed(() => {
   opacity: 1;
   /* 👇 transition 写在这里，只对"从隐藏到显示"的过程生效 */
   transition:
-    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: var(--delay, 0s);
 }
 
@@ -456,9 +452,8 @@ const indicatorStyle = computed(() => {
 }
 
 @media (width>=1024px) {
-  .switch-other {
-    width: 120px;
-    height: 42px;
+  .header-main {
+    box-shadow: none;
   }
 }
 </style>
