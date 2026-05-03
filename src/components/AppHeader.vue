@@ -155,14 +155,12 @@ const delayHidePopover = () => {
 // 汉堡菜单（只在移动端生效）
 const isMenuOpen = ref(false)
 const isToggling = ref(false)
-
 const toggleMenu = () => {
   if (isToggling.value) return
   isToggling.value = true
   isMenuOpen.value = !isMenuOpen.value
   setTimeout(() => (isToggling.value = false), 300)
 }
-
 //汉堡菜单全屏遮罩（只在移动端生效）
 //点击遮罩外部触发关闭遮罩
 // const menuMaskRef = ref(null)
@@ -176,7 +174,7 @@ const toggleMenu = () => {
 //     ignore: [menuContainerRef],
 //   },
 // )
-
+//汉堡菜单全屏遮罩（只在移动端生效）
 const handleNavClick = (path) => {
   // 先关闭菜单
   isMenuOpen.value = false
@@ -200,11 +198,11 @@ const indicatorStyle = computed(() => {
   return {
     // 自动计算垂直居中的top位置
     top: `${activeButton.offsetTop + (activeButton.offsetHeight - indicatorHeight) / 2}px`,
-    height: `${indicatorHeight}px`, // 固定高度
+    height: `${indicatorHeight}px`,
     right: '16px',
     width: '4px',
     backgroundColor: 'var(--bg-hover)',
-    borderRadius: '2px', // 如果高度改小，可以把圆角也对应调小，比如改成1px
+    borderRadius: '2px',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   }
 })
@@ -217,7 +215,7 @@ const indicatorStyle = computed(() => {
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
-  background-color: var(--bg-base);
+  background-color: transparent;
   box-shadow: 0 1px 0 0 #46433f83;
 }
 

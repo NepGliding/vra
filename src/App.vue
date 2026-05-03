@@ -24,7 +24,7 @@ useViewTransitionRouter()
   left: 16px;
   right: 16px;
   z-index: 10;
-  view-transition-name: none; /* 不让头部参与过渡 */
+  view-transition-name: none; /* none头部参与过渡 */
 }
 
 .main-center {
@@ -36,43 +36,9 @@ useViewTransitionRouter()
 }
 
 .child-view {
-  view-transition-name: page; /* 关键：统一过渡名称 */
+  view-transition-name: page;
   position: absolute;
   width: 100%;
   overflow: hidden;
-}
-</style>
-
-<!-- 全局过渡样式（不变） -->
-<style>
-::view-transition-old(page) {
-  animation: slide-out 0.6s cubic-bezier(0.55, 0, 0.1, 1) forwards;
-}
-::view-transition-new(page) {
-  animation: slide-in 0.6s cubic-bezier(0.55, 0, 0.1, 1) forwards;
-}
-@keyframes slide-out {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-}
-@keyframes slide-in {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-::view-transition-old(page),
-::view-transition-new(page) {
-  z-index: 2;
 }
 </style>

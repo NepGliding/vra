@@ -5,7 +5,7 @@
 }
 
 :root {
-  --bg-base: #f3f3f3;
+  --bg-base: #dcdddf;
   --bg-surface: #ffffff;
   --bg-sidebar: rgba(243, 243, 243, 0.8);
   --bg-hover: #0078d6;
@@ -15,8 +15,7 @@
 }
 
 .dark {
-  /* --bg-base: #09090b; */
-  --bg-base: #0a0a0a;
+  --bg-base: #141414;
   --bg-surface: #2d2d2d;
   --bg-sidebar: #18181b;
   --bg-hover: #4cc2ff;
@@ -27,15 +26,64 @@
 
 html,
 body {
-  background-color: var(--bg-base);
+  /* background-color: var(--bg-base); */
   color: var(--text-primary);
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
 
+/* 默认浅色模式背景（即 .deepFocus 的内容） */
+body {
+  background: linear-gradient(-180deg, #ebebeb 0%, #dcdddf 48%, #c4c5c7 99%);
+  /* 保证背景覆盖整个视口 */
+  min-height: 100vh;
+}
+
+/* 深色模式背景（即 .dementor 的内容） */
+.dark body {
+  /* background: #3e3e3e;
+  background-image: radial-gradient(at 50% -16%, rgba(31, 31, 31, 0.8) 0%, rgba(0, 0, 0, 0.9) 190%);
+  background-blend-mode: normal, multiply; */
+  background:
+    linear-gradient(90deg, #303030 5%, #363636 98%),
+    linear-gradient(74deg, rgba(34, 34, 34, 0.7) 54%, rgba(0, 0, 0, 0.5) 100%);
+  background-blend-mode: multiply;
+}
+
 #app {
   color: var(--text-primary);
+}
+
+::view-transition-old(page) {
+  animation: slide-out 0.6s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+}
+::view-transition-new(page) {
+  animation: slide-in 0.6s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+}
+@keyframes slide-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+}
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+::view-transition-old(page),
+::view-transition-new(page) {
+  z-index: 2;
 }
 
 button {
