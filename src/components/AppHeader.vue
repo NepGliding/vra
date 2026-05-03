@@ -218,14 +218,14 @@ const handleNavClick = (path) => {
 
 .switch-other-popover.show {
   width: 320px;
-  height: 320px;
+  height: 270px;
   visibility: visible;
   opacity: 1;
 }
 
 .switch-other-drawer {
   position: fixed;
-  bottom: 4px;
+  bottom: 0px;
   left: 8px;
   right: 8px;
   height: 400px;
@@ -239,6 +239,7 @@ const handleNavClick = (path) => {
 
 .switch-other-drawer.show {
   transform: translateY(0);
+  bottom: 8px;
 }
 
 .switch-other-span {
