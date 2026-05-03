@@ -78,7 +78,6 @@
         @click="handleNavClick(item.path)"
       >
         {{ item.name }}
-        <span>—</span>
       </button>
     </div>
     <div class="perch-btn-desktop">
@@ -91,7 +90,8 @@
           @click="router.push(item.path)"
         >
           {{ item.name }}
-          <span>—</span>
+          <div class="inverted-v"></div>
+          <!-- <span class="inverted-v"></span> -->
         </button>
       </div>
     </div>
@@ -218,7 +218,7 @@ const handleNavClick = (path) => {
 
 .switch-other-popover.show {
   width: 320px;
-  height: 270px;
+  height: 240px;
   visibility: visible;
   opacity: 1;
 }
@@ -320,22 +320,55 @@ const handleNavClick = (path) => {
 }
 
 .perch-btn-desktop {
-  width: 150px;
+  width: 190px;
+  height: 180px;
   position: fixed;
-  top: 32px;
+  top: 16px;
   right: 0;
-  display: flex;
-  justify-content: flex-start;
   text-align: right;
+  /* padding-right: 32px; */
 }
+
 .page-btn-desktop {
-  height: 5%;
-  height: 40px;
+  display: inline-block;
+  width: 100%;
+  height: 45px;
   font-size: 20px;
   background: transparent;
   color: var(--text-secondary);
   text-align: right;
-  padding-right: 16px;
+  padding: 0 48px;
+  transition: color 0.3s ease;
+}
+
+.page-btn-desktop:hover {
+  color: var(--text-primary);
+}
+
+.inverted-v {
+  position: relative;
+  right: -28px;
+}
+
+/* 把 transition 写在 :after 初始状态上！ */
+.inverted-v:after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  /* 必须给一个初始边框颜色，否则无法过渡 */
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease; /* 过渡写在这里 */
+  -webkit-transform: translate(0, -50%) rotate(-135deg);
+  transform: translate(0, -50%) rotate(-135deg);
+}
+
+.page-btn-desktop:hover .inverted-v:after {
+  /* hover 只改颜色 */
+  border-color: var(--text-primary);
 }
 
 .page-btn-active {

@@ -46,10 +46,10 @@ useViewTransitionRouter()
 <!-- 全局过渡样式（不变） -->
 <style>
 ::view-transition-old(page) {
-  animation: slide-out 0.8s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+  animation: slide-out 0.6s cubic-bezier(0.55, 0, 0.1, 1) forwards;
 }
 ::view-transition-new(page) {
-  animation: slide-in 0.8s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+  animation: slide-in 0.6s cubic-bezier(0.55, 0, 0.1, 1) forwards;
 }
 @keyframes slide-out {
   0% {
