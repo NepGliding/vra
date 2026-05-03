@@ -1,38 +1,33 @@
 <template>
-  <div class="api-main">
-    <!-- 新增图片容器，方便精准控制居中与尺寸 -->
-    <div class="img-container">
-      <img src="/Interesting/catsb.jpg" alt="cat" class="center-img" />
-    </div>
+  <div class="img-container">
+    <img :src="randomImgUrl" alt="随机图片" class="center-img" />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const imgList = [
+  '/vra/interesting/catsb.jpg',
+  '/vra/interesting/cathyw.jpg',
+  '/vra/interesting/catwen.jpg',
+]
+
+const randomIndex = Math.floor(Math.random() * imgList.length)
+const randomImgUrl = ref(imgList[randomIndex])
+</script>
 
 <style scoped>
-.api-main {
-  height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
-
 .img-container {
-  max-width: 250px;
-  max-height: 250px;
-  width: 100%;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .center-img {
-  width: 100%;
-  height: 100%;
+  max-width: 150px;
+  max-height: 150px;
   object-fit: contain;
-  max-width: 250px;
-  max-height: 250px;
 }
 </style>
