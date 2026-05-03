@@ -26,8 +26,8 @@ const randomImgUrl = ref(imgList[randomIndex])
   justify-content: center;
 }
 .center-img {
-  max-width: 150px;
-  max-height: 150px;
+  max-width: 250px;
+  max-height: 250px;
   object-fit: contain;
 }
 </style>
