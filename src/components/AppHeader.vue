@@ -225,12 +225,12 @@ const handleNavClick = (path) => {
 
 .switch-other-drawer {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
+  bottom: 4px;
+  left: 8px;
+  right: 8px;
   height: 400px;
   transform: translateY(100%);
-  border-radius: 22px 22px 0 0;
+  border-radius: 22px;
   border: 2px solid #3f3f46;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
