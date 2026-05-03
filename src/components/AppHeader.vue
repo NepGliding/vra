@@ -23,8 +23,8 @@
           stroke-linejoin="round"
         />
       </svg>
-      <span class="switch-other-span"> Other </span>
-      <svg
+      <span class="switch-other-span"> A Vite App </span>
+      <!-- <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         width="16"
@@ -34,7 +34,7 @@
         <path
           d="M18.2072 9.0428 12.0001 2.83569 5.793 9.0428 7.20721 10.457 12.0001 5.66412 16.793 10.457 18.2072 9.0428ZM5.79285 14.9572 12 21.1643 18.2071 14.9572 16.7928 13.543 12 18.3359 7.20706 13.543 5.79285 14.9572Z"
         ></path>
-      </svg>
+      </svg> -->
     </div>
     <div
       v-if="isDesktop"
@@ -72,10 +72,11 @@
       @click.self="isMenuOpen = false"
     >
       <button
-        v-for="item in navItems"
+        v-for="(item, index) in navItems"
         :key="item.path"
         class="page-btn-mobile"
         :class="{ 'page-btn-active': route.path === item.path }"
+        :style="{ '--delay': `${index * 0.1}s` }"
         @click="handleNavClick(item.path)"
       >
         {{ item.name }}
@@ -221,6 +222,7 @@ const indicatorStyle = computed(() => {
   align-items: center;
   padding: 16px 0;
   background-color: var(--bg-base);
+  border-bottom: 1px solid #46433f83;
 }
 
 .theme-toggle {
@@ -234,11 +236,10 @@ const indicatorStyle = computed(() => {
   width: 135px;
   height: 44px;
   border-radius: 22px;
-  border: 2px solid #46433f;
+  /* border: 2px solid #46433f; */
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: border 0.2s;
 }
 
 .switch-other-popover {
@@ -295,7 +296,7 @@ const indicatorStyle = computed(() => {
   z-index: 999;
 }
 
-.menu-full-mask {
+/* .menu-full-mask {
   position: fixed;
   top: 0;
   left: 0;
@@ -308,6 +309,32 @@ const indicatorStyle = computed(() => {
   overflow-x: hidden;
   opacity: 0;
   pointer-events: none;
+}
+
+.menu-full-mask.show {
+  opacity: 1;
+  pointer-events: auto;
+} */
+
+.menu-full-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: opacity 0.4s ease;
+  z-index: 100;
+  background-color: var(--bg-base);
+  box-sizing: border-box;
+  overflow-x: hidden; /* 防止动画时横向滚动 */
+  opacity: 0;
+  pointer-events: none;
+
+  /* 新增：用 flex 布局垂直居中按钮，替代原来的 top:28% */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 32px; /* 按钮右对齐的内边距 */
 }
 
 .menu-full-mask.show {
@@ -347,7 +374,7 @@ const indicatorStyle = computed(() => {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.page-btn-mobile {
+/* .page-btn-mobile {
   width: 100%;
   height: 62px;
   position: relative;
@@ -359,6 +386,31 @@ const indicatorStyle = computed(() => {
   color: var(--text-secondary);
   text-align: right;
   padding-right: 32px;
+} */
+.page-btn-mobile {
+  width: 100%;
+  height: 62px;
+  font-size: 24px;
+  font-weight: bold;
+  background: transparent;
+  color: var(--text-secondary);
+  text-align: right;
+  padding-right: 32px;
+
+  /* 👇 默认状态：只有初始位置，不写 transition */
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* 👇 只有当遮罩显示时，才给按钮添加过渡动画 */
+.menu-full-mask.show .page-btn-mobile {
+  transform: translateX(0);
+  opacity: 1;
+  /* 👇 transition 写在这里，只对"从隐藏到显示"的过程生效 */
+  transition:
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: var(--delay, 0s);
 }
 
 .perch-btn-desktop {

@@ -82,7 +82,7 @@ const handleNavClick = (item) => {
   align-items: center;
   justify-items: center;
   border-radius: 5px;
-  border: 1px solid #46433f;
+  /* border: 1px solid #46433f; */
 }
 
 .active-indicator {
@@ -111,7 +111,7 @@ const handleNavClick = (item) => {
   padding: 8px 4px;
   width: 90%;
   aspect-ratio: 1 / 1;
-  border-radius: 5px;
+  border-radius: 12px;
   transition: background-color 0.2s;
   z-index: 0;
 }
