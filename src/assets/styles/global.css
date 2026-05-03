@@ -43,7 +43,7 @@ body {
 /* 深色模式背景 */
 .dark body {
   background:
-    linear-gradient(90deg, #252525 5%, #303030 98%),
+    linear-gradient(90deg, #1f1f1f 5%, #252525 98%),
     linear-gradient(74deg, rgba(34, 34, 34, 0.7) 54%, rgba(0, 0, 0, 0.6) 100%);
   background-blend-mode: multiply;
 }

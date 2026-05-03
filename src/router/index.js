@@ -9,7 +9,7 @@ const router = createRouter({
     {
       path: '/interesting',
       name: 'interesting',
-      component: () => import('@/Views/InterestingAPIPage.vue'),
+      component: () => import('@/Views/InterestingPage.vue'),
     },
   ],
 })
