@@ -15,7 +15,7 @@
 }
 
 .dark {
-  --bg-base: #141414;
+  --bg-base: #131313;
   --bg-surface: #2d2d2d;
   --bg-sidebar: #18181b;
   --bg-hover: #4cc2ff;
@@ -33,21 +33,18 @@ body {
   min-height: 100vh;
 }
 
-/* 默认浅色模式背景（即 .deepFocus 的内容） */
+/* 默认浅色模式背景 */
 body {
   background: linear-gradient(-180deg, #ebebeb 0%, #dcdddf 48%, #c4c5c7 99%);
   /* 保证背景覆盖整个视口 */
   min-height: 100vh;
 }
 
-/* 深色模式背景（即 .dementor 的内容） */
+/* 深色模式背景 */
 .dark body {
-  /* background: #3e3e3e;
-  background-image: radial-gradient(at 50% -16%, rgba(31, 31, 31, 0.8) 0%, rgba(0, 0, 0, 0.9) 190%);
-  background-blend-mode: normal, multiply; */
   background:
-    linear-gradient(90deg, #303030 5%, #363636 98%),
-    linear-gradient(74deg, rgba(34, 34, 34, 0.7) 54%, rgba(0, 0, 0, 0.5) 100%);
+    linear-gradient(90deg, #252525 5%, #303030 98%),
+    linear-gradient(74deg, rgba(34, 34, 34, 0.7) 54%, rgba(0, 0, 0, 0.6) 100%);
   background-blend-mode: multiply;
 }
 

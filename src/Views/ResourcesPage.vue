@@ -2,7 +2,7 @@
   <div class="res-main">
     <AppNavMobile v-if="!isDesktop" class="nav-mobile" />
     <AppNavDesktop v-if="isDesktop" class="nav-desktop" />
-    <div class="res-content"></div>
+    <div class="res-content">内容测试</div>
   </div>
 </template>
 
@@ -28,11 +28,13 @@ const isDesktop = screens.greaterOrEqual('desktop')
 </script>
 
 <style scoped>
-.res-main {
+/* .res-main {
   height: 1024px;
-}
+} */
 .res-content {
-  width: 1024px;
+  height: 2000px;
+  background-color: rgba(225, 255, 255, 0.5);
+  /* margin: 40px 200px; */
 }
 .nav-mobile {
   position: fixed;

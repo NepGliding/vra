@@ -24,13 +24,13 @@ useViewTransitionRouter()
   left: 16px;
   right: 16px;
   z-index: 10;
-  view-transition-name: none; /* none头部参与过渡 */
+  view-transition-name: none; /* 不让头部参与过渡 */
 }
 
 .main-center {
   z-index: 1;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   min-height: 100vh;
   padding-top: calc(var(--header-height, 60px) + 16px);
 }
