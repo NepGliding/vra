@@ -357,16 +357,14 @@ const indicatorStyle = computed(() => {
   text-align: right;
   padding-right: 32px;
 
-  /* 👇 默认状态：只有初始位置，不写 transition */
   transform: translateX(5%);
   opacity: 0;
 }
 
-/* 👇 只有当遮罩显示时，才给按钮添加过渡动画 */
 .menu-full-mask.show .page-btn-mobile {
   transform: translateX(0);
   opacity: 1;
-  /* 👇 transition 写在这里，只对"从隐藏到显示"的过程生效 */
+
   transition:
     transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -404,7 +402,6 @@ const indicatorStyle = computed(() => {
   color: var(--text-primary);
 }
 
-/* 按钮组添加相对定位，让指示器绝对定位生效 */
 .perch-btn-desktop .button-group {
   position: relative;
 }
