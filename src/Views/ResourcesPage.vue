@@ -33,7 +33,6 @@ const isDesktop = screens.greaterOrEqual('desktop')
 } */
 .res-content {
   height: 2000px;
-  /* background-color: rgba(225, 255, 255, 0.5); */
 }
 .nav-mobile {
   position: fixed;

@@ -230,7 +230,6 @@ const indicatorStyle = computed(() => {
   width: 150px;
   height: 44px;
   border-radius: 22px;
-  /* border: 2px solid #46433f; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,26 +289,6 @@ const indicatorStyle = computed(() => {
   z-index: 999;
 }
 
-/* .menu-full-mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  transition: opacity 0.4s ease;
-  z-index: 100;
-  background-color: var(--bg-base);
-  box-sizing: border-box;
-  overflow-x: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.menu-full-mask.show {
-  opacity: 1;
-  pointer-events: auto;
-} */
-
 .menu-full-mask {
   position: fixed;
   top: 0;
@@ -368,19 +347,6 @@ const indicatorStyle = computed(() => {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* .page-btn-mobile {
-  width: 100%;
-  height: 62px;
-  position: relative;
-  top: 28%;
-  left: 0;
-  font-size: 24px;
-  font-weight: bold;
-  background: transparent;
-  color: var(--text-secondary);
-  text-align: right;
-  padding-right: 32px;
-} */
 .page-btn-mobile {
   width: 100%;
   height: 62px;
@@ -392,7 +358,7 @@ const indicatorStyle = computed(() => {
   padding-right: 32px;
 
   /* 👇 默认状态：只有初始位置，不写 transition */
-  transform: translateX(100%);
+  transform: translateX(5%);
   opacity: 0;
 }
 
