@@ -19,11 +19,13 @@ const randomImgUrl = ref(imgList[randomIndex])
 
 <style scoped>
 .img-container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh; /* 最小高度占满视口，内容少也撑满，内容多则自适应 */
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; /* 容器内部超出部分隐藏，避免局部滚动 */
+  box-sizing: border-box; /* 防止内边距/边框撑大容器 */
 }
 .center-img {
   max-width: 250px;

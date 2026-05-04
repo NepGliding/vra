@@ -4,6 +4,21 @@
   box-sizing: border-box;
 }
 
+/* ::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #33ffee, #ff701e);
+  border-radius: 10px;
+} */
+
 :root {
   --bg-base: #dcdddf;
   --bg-surface: #ffffff;
@@ -26,21 +41,19 @@
 
 html,
 body {
-  /* background-color: var(--bg-base); */
   color: var(--text-primary);
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
-/* 默认浅色模式背景 */
 body {
   background: linear-gradient(-180deg, #ebebeb 0%, #dcdddf 48%, #c4c5c7 99%);
-  /* 保证背景覆盖整个视口 */
-  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-/* 深色模式背景 */
 .dark body {
   background:
     linear-gradient(90deg, #1f1f1f 5%, #252525 98%),
