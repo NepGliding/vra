@@ -299,15 +299,14 @@ const indicatorStyle = computed(() => {
   z-index: 100;
   background-color: var(--bg-base);
   box-sizing: border-box;
-  overflow-x: hidden; /* 防止动画时横向滚动 */
+  overflow-x: hidden;
   opacity: 0;
   pointer-events: none;
 
-  /* 新增：用 flex 布局垂直居中按钮，替代原来的 top:28% */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-right: 32px; /* 按钮右对齐的内边距 */
+  padding-right: 32px;
 }
 
 .menu-full-mask.show {
@@ -357,7 +356,7 @@ const indicatorStyle = computed(() => {
   text-align: right;
   padding-right: 32px;
 
-  transform: translateX(5%);
+  transform: translateX(8%);
   opacity: 0;
 }
 
@@ -366,8 +365,8 @@ const indicatorStyle = computed(() => {
   opacity: 1;
 
   transition:
-    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: var(--delay, 0s);
 }
 

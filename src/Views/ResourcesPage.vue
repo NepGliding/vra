@@ -39,18 +39,6 @@ const isDesktop = screens.greaterOrEqual('desktop')
   margin: 0 auto;
 }
 
-/* .category-wrap {
-}
-
-.category-title {
-}
-.div-mobile {
-  padding: 0 16px;
-}
-
-.div-desktop {
-} */
-
 @media (width>=1024px) {
   .res-content {
     margin: 60px auto;
