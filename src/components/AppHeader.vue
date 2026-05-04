@@ -355,19 +355,12 @@ const indicatorStyle = computed(() => {
   color: var(--text-secondary);
   text-align: right;
   padding-right: 32px;
-
-  transform: translateX(8%);
   opacity: 0;
 }
 
 .menu-full-mask.show .page-btn-mobile {
-  transform: translateX(0);
   opacity: 1;
-
-  transition:
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: var(--delay, 0s);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .perch-btn-desktop {
