@@ -364,8 +364,8 @@ const indicatorStyle = computed(() => {
 }
 
 .perch-btn-desktop {
-  width: 210px;
-  height: 180px;
+  width: 190px;
+  height: 140px;
   position: fixed;
   top: 16px;
   right: 0;

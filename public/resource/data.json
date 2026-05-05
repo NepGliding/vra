@@ -1,0 +1,302 @@
+[
+  {
+    "title": "GPU-Z",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A lightweight utility that shows you all details about your video card and GPU",
+    "officialUrl": "www.techpowerup.com/gpuz",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "9.6M",
+    "category": "硬件",
+    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
+  },
+  {
+    "title": "网易UU远程",
+    "logo": "/vra/interesting/cathyw.jpg",
+    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
+    "officialUrl": "uuyc.163.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "61.5M",
+    "category": "软件",
+    "keywords": ["远程桌面"]
+  },
+  {
+    "title": "Steam",
+    "logo": "/vra/interesting/catwen.jpg",
+    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
+    "officialUrl": "store.steampowered.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "256.8M",
+    "category": "游戏",
+    "keywords": ["游戏平台"]
+  },
+  {
+    "title": "360壁纸",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
+    "officialUrl": "bizhi.360.cn",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "网站",
+    "keywords": ["壁纸网站"]
+  },
+  {
+    "title": "FFmpeg",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "officialUrl": "ffmpeg.org",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "神器",
+    "keywords": ["神器"]
+  },
+  {
+    "title": "GPU-Z",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A lightweight utility that shows you all details about your video card and GPU",
+    "officialUrl": "www.techpowerup.com/gpuz",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "9.6M",
+    "category": "硬件",
+    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
+  },
+  {
+    "title": "网易UU远程",
+    "logo": "/vra/interesting/cathyw.jpg",
+    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
+    "officialUrl": "uuyc.163.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "61.5M",
+    "category": "硬件",
+    "keywords": ["远程桌面"]
+  },
+  {
+    "title": "Steam",
+    "logo": "/vra/interesting/catwen.jpg",
+    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
+    "officialUrl": "store.steampowered.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "256.8M",
+    "category": "硬件",
+    "keywords": ["游戏平台"]
+  },
+  {
+    "title": "360壁纸",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
+    "officialUrl": "bizhi.360.cn",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "软件",
+    "keywords": ["壁纸网站"]
+  },
+  {
+    "title": "FFmpeg",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "officialUrl": "ffmpeg.org",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "硬件",
+    "keywords": ["神器"]
+  },
+  {
+    "title": "GPU-Z",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A lightweight utility that shows you all details about your video card and GPU",
+    "officialUrl": "www.techpowerup.com/gpuz",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "9.6M",
+    "category": "硬件",
+    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
+  },
+  {
+    "title": "网易UU远程",
+    "logo": "/vra/interesting/cathyw.jpg",
+    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
+    "officialUrl": "uuyc.163.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "61.5M",
+    "category": "硬件",
+    "keywords": ["远程桌面"]
+  },
+  {
+    "title": "Steam",
+    "logo": "/vra/interesting/catwen.jpg",
+    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
+    "officialUrl": "store.steampowered.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "256.8M",
+    "category": "硬件",
+    "keywords": ["游戏平台"]
+  },
+  {
+    "title": "360壁纸",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
+    "officialUrl": "bizhi.360.cn",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "软件",
+    "keywords": ["壁纸网站"]
+  },
+  {
+    "title": "FFmpeg",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "officialUrl": "ffmpeg.org",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "软件",
+    "keywords": ["神器"]
+  },
+  {
+    "title": "GPU-Z",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A lightweight utility that shows you all details about your video card and GPU",
+    "officialUrl": "www.techpowerup.com/gpuz",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "9.6M",
+    "category": "硬件",
+    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
+  },
+  {
+    "title": "网易UU远程",
+    "logo": "/vra/interesting/cathyw.jpg",
+    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
+    "officialUrl": "uuyc.163.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "61.5M",
+    "category": "硬件",
+    "keywords": ["远程桌面"]
+  },
+  {
+    "title": "Steam",
+    "logo": "/vra/interesting/catwen.jpg",
+    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
+    "officialUrl": "store.steampowered.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "256.8M",
+    "category": "硬件",
+    "keywords": ["游戏平台"]
+  },
+  {
+    "title": "360壁纸",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
+    "officialUrl": "bizhi.360.cn",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "软件",
+    "keywords": ["壁纸网站"]
+  },
+  {
+    "title": "FFmpeg",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "officialUrl": "ffmpeg.org",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "网站",
+    "keywords": ["神器"]
+  },
+  {
+    "title": "GPU-Z",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A lightweight utility that shows you all details about your video card and GPU",
+    "officialUrl": "www.techpowerup.com/gpuz",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "9.6M",
+    "category": "硬件",
+    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
+  },
+  {
+    "title": "网易UU远程",
+    "logo": "/vra/interesting/cathyw.jpg",
+    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
+    "officialUrl": "uuyc.163.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "61.5M",
+    "category": "硬件",
+    "keywords": ["远程桌面"]
+  },
+  {
+    "title": "Steam",
+    "logo": "/vra/interesting/catwen.jpg",
+    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
+    "officialUrl": "store.steampowered.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "256.8M",
+    "category": "网站",
+    "keywords": ["游戏平台"]
+  },
+  {
+    "title": "360壁纸",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
+    "officialUrl": "bizhi.360.cn",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "网站",
+    "keywords": ["壁纸网站"]
+  },
+  {
+    "title": "FFmpeg",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "officialUrl": "ffmpeg.org",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "网站",
+    "keywords": ["神器"]
+  },
+  {
+    "title": "GPU-Z",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A lightweight utility that shows you all details about your video card and GPU",
+    "officialUrl": "www.techpowerup.com/gpuz",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "9.6M",
+    "category": "游戏",
+    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
+  },
+  {
+    "title": "网易UU远程",
+    "logo": "/vra/interesting/cathyw.jpg",
+    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
+    "officialUrl": "uuyc.163.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "61.5M",
+    "category": "系统",
+    "keywords": ["远程桌面"]
+  },
+  {
+    "title": "Steam",
+    "logo": "/vra/interesting/catwen.jpg",
+    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
+    "officialUrl": "store.steampowered.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "256.8M",
+    "category": "硬件",
+    "keywords": ["游戏平台"]
+  },
+  {
+    "title": "360壁纸",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
+    "officialUrl": "bizhi.360.cn",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "系统",
+    "keywords": ["壁纸网站"]
+  },
+  {
+    "title": "FFmpeg",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "officialUrl": "ffmpeg.org",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "89.0M",
+    "category": "系统",
+    "keywords": ["神器"]
+  }
+]

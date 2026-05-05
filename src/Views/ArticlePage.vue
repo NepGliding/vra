@@ -1,15 +1,13 @@
 <template>
-  <div class="article-main">
-    <div>文章测试...</div>
+  <div class="art-main">
+    <h1>文章测试...</h1>
   </div>
 </template>
 
 <script setup></script>
 
 <style scoped>
-.article-main {
-  height: 2024px;
-  width: 100%;
-  box-sizing: border-box;
+.art-main {
+  height: 1024px;
 }
 </style>
