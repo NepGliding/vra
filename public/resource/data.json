@@ -12,7 +12,7 @@
   {
     "title": "网易UU远程",
     "logo": "/vra/interesting/cathyw.jpg",
-    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
+    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。",
     "officialUrl": "uuyc.163.com",
     "netDiskUrl": "cn.vuejs.org",
     "fileSize": "61.5M",
@@ -46,257 +46,197 @@
     "officialUrl": "ffmpeg.org",
     "netDiskUrl": "cn.vuejs.org",
     "fileSize": "89.0M",
-    "category": "神器",
-    "keywords": ["神器"]
+    "category": "系统",
+    "keywords": ["视频处理"]
   },
   {
-    "title": "GPU-Z",
+    "title": "CPU-Z",
     "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A lightweight utility that shows you all details about your video card and GPU",
-    "officialUrl": "www.techpowerup.com/gpuz",
+    "desc": "专业的CPU、主板、内存硬件信息检测工具，精准显示硬件详细参数",
+    "officialUrl": "www.cpuid.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "9.6M",
+    "fileSize": "8.2M",
     "category": "硬件",
-    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
+    "keywords": ["CPU检测", "硬件信息", "内存检测", "主板信息"]
   },
   {
-    "title": "网易UU远程",
+    "title": "HD Tune",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "硬盘健康检测与性能测试工具，支持坏道扫描、温度监控",
+    "officialUrl": "www.hdtune.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "12.4M",
+    "category": "硬件",
+    "keywords": ["硬盘检测", "坏道扫描", "存储监控", "硬件测试"]
+  },
+  {
+    "title": "AIDA64",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "全能硬件信息检测与稳定性测试软件，覆盖全硬件组件检测",
+    "officialUrl": "www.aida64.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "45.1M",
+    "category": "硬件",
+    "keywords": ["硬件检测", "稳定性测试", "传感器监控", "全平台检测"]
+  },
+  {
+    "title": "微信电脑版",
     "logo": "/vra/interesting/cathyw.jpg",
-    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
-    "officialUrl": "uuyc.163.com",
+    "desc": "跨平台社交聊天软件，支持文件传输、语音视频通话、朋友圈浏览",
+    "officialUrl": "pc.weixin.qq.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "61.5M",
-    "category": "硬件",
-    "keywords": ["远程桌面"]
-  },
-  {
-    "title": "Steam",
-    "logo": "/vra/interesting/catwen.jpg",
-    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
-    "officialUrl": "store.steampowered.com",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "256.8M",
-    "category": "硬件",
-    "keywords": ["游戏平台"]
-  },
-  {
-    "title": "360壁纸",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
-    "officialUrl": "bizhi.360.cn",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
+    "fileSize": "128.3M",
     "category": "软件",
-    "keywords": ["壁纸网站"]
+    "keywords": ["社交软件", "文件传输", "视频通话", "办公沟通"]
   },
   {
-    "title": "FFmpeg",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
-    "officialUrl": "ffmpeg.org",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
-    "category": "硬件",
-    "keywords": ["神器"]
-  },
-  {
-    "title": "GPU-Z",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A lightweight utility that shows you all details about your video card and GPU",
-    "officialUrl": "www.techpowerup.com/gpuz",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "9.6M",
-    "category": "硬件",
-    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
-  },
-  {
-    "title": "网易UU远程",
+    "title": "WPS Office",
     "logo": "/vra/interesting/cathyw.jpg",
-    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
-    "officialUrl": "uuyc.163.com",
+    "desc": "全能办公套件，支持文档、表格、演示文稿编辑，兼容全格式文件",
+    "officialUrl": "www.wps.cn",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "61.5M",
-    "category": "硬件",
-    "keywords": ["远程桌面"]
-  },
-  {
-    "title": "Steam",
-    "logo": "/vra/interesting/catwen.jpg",
-    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
-    "officialUrl": "store.steampowered.com",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "256.8M",
-    "category": "硬件",
-    "keywords": ["游戏平台"]
-  },
-  {
-    "title": "360壁纸",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
-    "officialUrl": "bizhi.360.cn",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
+    "fileSize": "215.7M",
     "category": "软件",
-    "keywords": ["壁纸网站"]
+    "keywords": ["办公软件", "文档编辑", "表格处理", "PDF工具"]
   },
   {
-    "title": "FFmpeg",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
-    "officialUrl": "ffmpeg.org",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
-    "category": "软件",
-    "keywords": ["神器"]
-  },
-  {
-    "title": "GPU-Z",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A lightweight utility that shows you all details about your video card and GPU",
-    "officialUrl": "www.techpowerup.com/gpuz",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "9.6M",
-    "category": "硬件",
-    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
-  },
-  {
-    "title": "网易UU远程",
+    "title": "剪映专业版",
     "logo": "/vra/interesting/cathyw.jpg",
-    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
-    "officialUrl": "uuyc.163.com",
+    "desc": "免费专业视频剪辑软件，内置海量模板、特效、字幕自动生成功能",
+    "officialUrl": "www.capcut.cn",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "61.5M",
-    "category": "硬件",
-    "keywords": ["远程桌面"]
-  },
-  {
-    "title": "Steam",
-    "logo": "/vra/interesting/catwen.jpg",
-    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
-    "officialUrl": "store.steampowered.com",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "256.8M",
-    "category": "硬件",
-    "keywords": ["游戏平台"]
-  },
-  {
-    "title": "360壁纸",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
-    "officialUrl": "bizhi.360.cn",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
+    "fileSize": "320.5M",
     "category": "软件",
-    "keywords": ["壁纸网站"]
+    "keywords": ["视频剪辑", "特效制作", "字幕工具", "自媒体创作"]
   },
   {
-    "title": "FFmpeg",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
-    "officialUrl": "ffmpeg.org",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
-    "category": "网站",
-    "keywords": ["神器"]
-  },
-  {
-    "title": "GPU-Z",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A lightweight utility that shows you all details about your video card and GPU",
-    "officialUrl": "www.techpowerup.com/gpuz",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "9.6M",
-    "category": "硬件",
-    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
-  },
-  {
-    "title": "网易UU远程",
+    "title": "迅雷",
     "logo": "/vra/interesting/cathyw.jpg",
-    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
-    "officialUrl": "uuyc.163.com",
+    "desc": "高速下载工具，支持多协议下载、云盘同步、边下边播",
+    "officialUrl": "www.xunlei.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "61.5M",
-    "category": "硬件",
-    "keywords": ["远程桌面"]
+    "fileSize": "78.9M",
+    "category": "软件",
+    "keywords": ["下载工具", "高速下载", "云盘存储", "视频播放"]
   },
   {
-    "title": "Steam",
+    "title": "英雄联盟",
     "logo": "/vra/interesting/catwen.jpg",
-    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
-    "officialUrl": "store.steampowered.com",
+    "desc": "经典MOBA竞技网游，全球热门团队对抗游戏，丰富英雄与赛事体系",
+    "officialUrl": "lol.qq.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "256.8M",
-    "category": "网站",
-    "keywords": ["游戏平台"]
-  },
-  {
-    "title": "360壁纸",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
-    "officialUrl": "bizhi.360.cn",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
-    "category": "网站",
-    "keywords": ["壁纸网站"]
-  },
-  {
-    "title": "FFmpeg",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
-    "officialUrl": "ffmpeg.org",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
-    "category": "网站",
-    "keywords": ["神器"]
-  },
-  {
-    "title": "GPU-Z",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A lightweight utility that shows you all details about your video card and GPU",
-    "officialUrl": "www.techpowerup.com/gpuz",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "9.6M",
+    "fileSize": "12.5G",
     "category": "游戏",
-    "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
+    "keywords": ["MOBA游戏", "竞技网游", "团队对抗", "热门游戏"]
   },
   {
-    "title": "网易UU远程",
-    "logo": "/vra/interesting/cathyw.jpg",
-    "desc": "UU远程支持手机、平板、Mac与PC等多设备远控电脑 ，满足远程办公、远程游戏和远程协助需求。凭借高速直连和超低延迟，提供流畅的本地操控体验，支持 4K 144 帧显示，兼容键鼠、手柄和多点触控，让用户畅玩各类游戏。近期推出远程开机、多屏控制、UI 升级、高速文件传输和HDR支持等功能，以及支持Win控Mac功能，全面提升办公效率。",
-    "officialUrl": "uuyc.163.com",
-    "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "61.5M",
-    "category": "系统",
-    "keywords": ["远程桌面"]
-  },
-  {
-    "title": "Steam",
+    "title": "原神",
     "logo": "/vra/interesting/catwen.jpg",
-    "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
-    "officialUrl": "store.steampowered.com",
+    "desc": "开放世界冒险游戏，精美画风，丰富剧情与自由探索玩法",
+    "officialUrl": "ys.mihoyo.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "256.8M",
-    "category": "硬件",
-    "keywords": ["游戏平台"]
+    "fileSize": "85.2G",
+    "category": "游戏",
+    "keywords": ["开放世界", "冒险游戏", "二次元", "角色扮演"]
   },
   {
-    "title": "360壁纸",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
-    "officialUrl": "bizhi.360.cn",
+    "title": "绝地求生",
+    "logo": "/vra/interesting/catwen.jpg",
+    "desc": "大型多人在线战术竞技型射击类沙盒游戏，百人跳伞求生玩法",
+    "officialUrl": "pubg.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
-    "category": "系统",
-    "keywords": ["壁纸网站"]
+    "fileSize": "65.8G",
+    "category": "游戏",
+    "keywords": ["吃鸡游戏", "射击竞技", "沙盒游戏", "多人在线"]
   },
   {
-    "title": "FFmpeg",
-    "logo": "/vra/interesting/catsb.jpg",
-    "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
-    "officialUrl": "ffmpeg.org",
+    "title": "CS2",
+    "logo": "/vra/interesting/catwen.jpg",
+    "desc": "经典第一人称射击游戏，电竞标杆，硬核竞技对战体验",
+    "officialUrl": "www.counter-strike.net",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
+    "fileSize": "48.3G",
+    "category": "游戏",
+    "keywords": ["FPS游戏", "电竞竞技", "射击对战", "经典游戏"]
+  },
+  {
+    "title": "B站",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "年轻人的二次元社区，提供动漫、游戏、知识、生活等全品类视频",
+    "officialUrl": "www.bilibili.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "无",
+    "category": "网站",
+    "keywords": ["视频网站", "二次元", "知识学习", "弹幕社区"]
+  },
+  {
+    "title": "知乎",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "中文互联网高质量问答社区，聚集各领域专业人士分享知识",
+    "officialUrl": "www.zhihu.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "无",
+    "category": "网站",
+    "keywords": ["问答社区", "知识分享", "经验交流", "专业解答"]
+  },
+  {
+    "title": "掘金",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "面向开发者的技术社区，分享编程、前端、后端、AI等技术干货",
+    "officialUrl": "juejin.cn",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "无",
+    "category": "网站",
+    "keywords": ["技术社区", "编程学习", "开发者交流", "前端开发"]
+  },
+  {
+    "title": "百度网盘",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "大容量云存储服务网站，支持文件备份、同步、在线预览",
+    "officialUrl": "pan.baidu.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "无",
+    "category": "网站",
+    "keywords": ["云存储", "文件备份", "网盘服务", "在线预览"]
+  },
+  {
+    "title": "DiskGenius",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "专业磁盘分区管理工具，支持分区创建、删除、数据恢复",
+    "officialUrl": "www.diskgenius.cn",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "35.6M",
     "category": "系统",
-    "keywords": ["神器"]
+    "keywords": ["磁盘管理", "分区工具", "数据恢复", "系统维护"]
+  },
+  {
+    "title": "Dism++",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "开源系统优化清理工具，精简系统、修复故障、释放磁盘空间",
+    "officialUrl": "www.chuyu.me",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "10.1M",
+    "category": "系统",
+    "keywords": ["系统优化", "垃圾清理", "系统修复", "轻量级工具"]
+  },
+  {
+    "title": "Geek Uninstaller",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "高效软件卸载工具，强制卸载残留文件，清理注册表",
+    "officialUrl": "geekuninstaller.com",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "6.8M",
+    "category": "系统",
+    "keywords": ["软件卸载", "清理残留", "注册表清理", "系统工具"]
+  },
+  {
+    "title": "Rufus",
+    "logo": "/vra/interesting/catsb.jpg",
+    "desc": "轻量级U盘启动制作工具，快速制作系统安装盘，兼容全系统",
+    "officialUrl": "rufus.ie",
+    "netDiskUrl": "cn.vuejs.org",
+    "fileSize": "5.3M",
+    "category": "系统",
+    "keywords": ["启动盘制作", "系统安装", "U盘工具", "轻量级"]
   }
 ]
