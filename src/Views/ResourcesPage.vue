@@ -11,28 +11,41 @@
           @click="selectedCategory = group.category"
         >
           {{ group.category }}
-          <span class="tab-count">{{ group.items.length }}</span>
         </div>
       </div>
 
       <!-- 卡片网格：根据屏幕宽度自适应列数 -->
       <div class="cards-grid" v-if="currentCategoryTools.length">
-        <div v-for="tool in currentCategoryTools" :key="tool.title" class="tool-card">
-          <div class="card-header">
-            <img :src="tool.logo" :alt="tool.title" class="card-logo" />
-            <div class="card-title-wrap">
-              <h3 class="card-title">{{ tool.title }}</h3>
-              <span class="file-size">{{ tool.fileSize }}</span>
+        <!-- 外层包裹链接，实现整个卡片点击跳转官网 -->
+        <a
+          v-for="tool in currentCategoryTools"
+          :key="tool.title"
+          :href="formatUrl(tool.officialUrl)"
+          target="_blank"
+          class="tool-card-link"
+        >
+          <div class="tool-card">
+            <div class="card-header">
+              <img :src="tool.logo" :alt="tool.title" class="card-logo" />
+              <div class="card-title-wrap">
+                <h3 class="card-title">{{ tool.title }}</h3>
+                <span class="file-size">{{ tool.fileSize }}</span>
+              </div>
+            </div>
+            <p class="card-desc">{{ tool.desc }}</p>
+            <div class="card-actions">
+              <!-- 仅保留网盘按钮 -->
+              <a
+                :href="formatUrl(tool.netDiskUrl)"
+                target="_blank"
+                class="action-link disk"
+                @click.stop
+              >
+                网盘
+              </a>
             </div>
           </div>
-          <p class="card-desc">{{ tool.desc }}</p>
-          <div class="card-actions">
-            <a :href="formatUrl(tool.officialUrl)" target="_blank" class="action-link official"
-              >官网</a
-            >
-            <a :href="formatUrl(tool.netDiskUrl)" target="_blank" class="action-link disk">网盘</a>
-          </div>
-        </div>
+        </a>
       </div>
       <div v-else-if="!loading && groupedTools.length" class="empty-tools">该分类下暂无工具</div>
 
@@ -113,11 +126,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* ---------- 基础样式 ---------- */
 .res-main {
   width: 100%;
   min-height: 100vh;
-  background-color: #f8f9fc;
 }
 .res-content {
   max-width: 1400px;
@@ -125,7 +136,6 @@ onMounted(() => {
   padding: 20px 24px;
 }
 
-/* ---------- 横向 Tab 分类栏（共用） ---------- */
 .category-tabs {
   display: flex;
   gap: 10px;
@@ -135,23 +145,21 @@ onMounted(() => {
   margin-bottom: 28px;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
-  border-bottom: 1px solid #e9edf2;
 }
 .tab-item {
   flex-shrink: 0;
   padding: 8px 20px;
   background: transparent;
-  border-radius: 40px;
-  font-size: 1rem;
+  border-radius: 2px;
+  font-size: 18px;
   font-weight: 500;
-  color: #4a5b7a;
+  color: var(--text-primary);
   transition: all 0.2s;
   cursor: pointer;
   position: relative;
 }
 .tab-item.active {
-  color: #2c5f8a;
-  background: #ecf5fb;
+  color: var(--el-active);
 }
 .tab-count {
   margin-left: 8px;
@@ -173,16 +181,23 @@ onMounted(() => {
   gap: 24px;
 }
 
+/* 卡片链接容器：消除a标签默认样式，继承网格布局 */
+.tool-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 /* 卡片样式（统一适用于移动端和桌面端） */
 .tool-card {
-  background: #ffffff;
-  border-radius: 20px;
+  background: #f7f7f7;
+  border-radius: 2px;
   padding: 18px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   transition: all 0.25s ease;
-  border: 1px solid #edf2f7;
   display: flex;
   flex-direction: column;
+  cursor: pointer; /* 增加手型光标，提示可点击 */
 }
 .tool-card:hover {
   transform: translateY(-4px);
@@ -200,10 +215,7 @@ onMounted(() => {
   width: 52px;
   height: 52px;
   object-fit: contain;
-  border-radius: 16px;
-  background: #f8fafd;
   padding: 6px;
-  border: 1px solid #eef2f6;
 }
 .card-title-wrap {
   flex: 1;
@@ -221,9 +233,8 @@ onMounted(() => {
 }
 .file-size {
   font-size: 0.7rem;
-  background: #eef2ff;
+  background: transparent;
   padding: 4px 10px;
-  border-radius: 30px;
   color: #2c5f8a;
   white-space: nowrap;
 }
@@ -247,23 +258,17 @@ onMounted(() => {
   font-size: 0.8rem;
   font-weight: 500;
   padding: 6px 16px;
-  border-radius: 40px;
+  border-radius: 4px;
   text-decoration: none;
   transition: all 0.2s;
 }
-.action-link.official {
-  background: #ecfdf3;
-  color: #067647;
-  border: 1px solid #abefc6;
-}
-.action-link.official:hover {
-  background: #d1fadf;
-  transform: translateY(-1px);
-}
+/* 移除官网按钮样式，保留网盘按钮样式 */
 .action-link.disk {
   background: #eff8ff;
   color: #175cd3;
-  border: 1px solid #b2ddff;
+  /* 网盘按钮增加层级，确保点击不穿透 */
+  position: relative;
+  z-index: 1;
 }
 .action-link.disk:hover {
   background: #e1effe;
