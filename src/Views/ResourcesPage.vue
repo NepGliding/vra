@@ -1,132 +1,165 @@
 <template>
   <div class="res-main">
     <div class="res-content">
-      <!-- 顶部横向 Tab（分类导航）- 保留原有逻辑 -->
+      <!-- 顶部横向 Tab（分类导航）- 仅用于导航滚动 -->
       <div class="category-tabs" v-if="groupedTools.length">
         <div
           v-for="group in groupedTools"
           :key="group.category"
           class="tab-item"
-          :class="{ active: selectedCategory === group.category }"
-          @click="selectedCategory = group.category"
+          :class="{ active: activeCategory === group.category }"
+          @click="scrollToCategory(group.category)"
         >
           {{ group.category }}
         </div>
       </div>
 
-      <!-- 卡片网格布局 - 替换原表格布局 -->
-      <div class="card-container" v-if="currentCategoryTools.length">
+      <!-- 连续展示所有分类的工具（不进行筛选分离） -->
+      <div v-if="!loading && groupedTools.length">
         <div
-          v-for="tool in currentCategoryTools"
-          :key="tool.title"
-          class="tool-card"
-          @click="goToOfficial(tool.officialUrl)"
+          v-for="group in groupedTools"
+          :key="group.category"
+          class="category-section"
+          :data-category="group.category"
         >
-          <!-- 卡片头部：图标 + 工具名称 -->
-          <div class="card-header">
-            <img :src="tool.logo" :alt="tool.title" class="card-logo" />
-            <a :href="formatUrl(tool.officialUrl)" target="_blank" class="title-link" @click.stop>
-              {{ tool.title }}
-            </a>
-          </div>
+          <!-- 分类标题 -->
+          <h2 class="category-title">{{ group.category }}</h2>
 
-          <!-- 卡片主体：描述 -->
-          <div class="card-body">
-            <p class="card-desc">{{ tool.desc }}</p>
-          </div>
+          <!-- 卡片网格布局 -->
+          <div class="card-container">
+            <div
+              v-for="tool in group.items"
+              :key="tool.title"
+              class="tool-card"
+              @click="goToOfficial(tool.officialUrl)"
+            >
+              <!-- 卡片头部：图标 + 工具名称 -->
+              <div class="card-header">
+                <img :src="tool.logo" :alt="tool.title" class="card-logo" />
+                <a
+                  :href="formatUrl(tool.officialUrl)"
+                  target="_blank"
+                  class="title-link"
+                  @click.stop
+                >
+                  {{ tool.title }}
+                </a>
+              </div>
 
-          <!-- 卡片底部：网盘下载 -->
-          <div class="card-footer" v-if="tool.netDiskUrl !== 'false'">
-            <span class="file-size">{{ tool.fileSize }}</span>
-            <a :href="formatUrl(tool.netDiskUrl)" target="_blank" class="disk-btn" @click.stop>
-              网盘下载
-            </a>
+              <!-- 卡片主体：描述 -->
+              <div class="card-body">
+                <p class="card-desc">{{ tool.desc }}</p>
+              </div>
+
+              <!-- 卡片底部：网盘下载 -->
+              <div class="card-footer" v-if="tool.netDiskUrl !== 'false'">
+                <span class="file-size">{{ tool.fileSize }}</span>
+                <a :href="formatUrl(tool.netDiskUrl)" target="_blank" class="disk-btn" @click.stop>
+                  网盘下载
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 空状态/加载状态 - 保留原有逻辑，仅调整样式类名适配 -->
-      <div v-else-if="!loading && groupedTools.length" class="empty-state">该分类下暂无工具</div>
+      <!-- 空状态/加载状态 -->
+      <div v-else-if="!loading && !groupedTools.length" class="empty-state">暂无工具资源</div>
       <div v-if="loading" class="loading-state">加载工具列表中...</div>
-      <div v-else-if="toolList.length === 0" class="empty-state">暂无工具数据</div>
     </div>
   </div>
 </template>
 
 <script setup>
-// 所有脚本逻辑完全保留，无任何修改
-import { ref, computed, watch, onMounted } from 'vue'
+import { computed, ref, nextTick, watch } from 'vue'
+import { useFetch, useThrottleFn, useEventListener, useWindowScroll } from '@vueuse/core'
 
-const toolList = ref([])
-const loading = ref(true)
+// 数据获取
+const { data: toolList, isFetching: loading } = useFetch('/vra/resource/data.json').json()
 
-// 分组（按 category）
+// 分组数据
 const groupedTools = computed(() => {
   const groupsMap = new Map()
-  for (const tool of toolList.value) {
+  for (const tool of toolList.value || []) {
     const cat = tool.category || '其他工具'
-    if (!groupsMap.has(cat)) {
-      groupsMap.set(cat, { category: cat, items: [] })
-    }
+    if (!groupsMap.has(cat)) groupsMap.set(cat, { category: cat, items: [] })
     groupsMap.get(cat).items.push(tool)
   }
   return Array.from(groupsMap.values())
 })
 
-// 当前选中的分类
-const selectedCategory = ref('')
+// 当前高亮的分类
+const activeCategory = ref('')
 
-// 当前分类下的工具列表
-const currentCategoryTools = computed(() => {
-  const group = groupedTools.value.find((g) => g.category === selectedCategory.value)
-  return group?.items || []
-})
+// 获取窗口滚动位置
+const { y } = useWindowScroll()
 
-// 默认选中第一个分类
+// 节流更新高亮分类
+const updateActiveCategory = () => {
+  const sections = document.querySelectorAll('.category-section')
+  if (!sections.length) return
+
+  const viewportTop = y.value + 80 // 偏移量（导航栏高度）
+  let currentSection = null
+  let minDistance = Infinity
+
+  for (const section of sections) {
+    const rect = section.getBoundingClientRect()
+    const sectionTop = rect.top + y.value
+    const distance = Math.abs(sectionTop - viewportTop)
+    if (distance < minDistance) {
+      minDistance = distance
+      currentSection = section
+    }
+  }
+
+  if (currentSection) {
+    const category = currentSection.getAttribute('data-category')
+    if (category && activeCategory.value !== category) {
+      activeCategory.value = category
+    }
+  }
+}
+
+const throttledUpdate = useThrottleFn(updateActiveCategory, 100)
+
+// 监听滚动与窗口尺寸变化（自动绑定/卸载）
+useEventListener('scroll', throttledUpdate)
+useEventListener('resize', throttledUpdate)
+
+// 滚动到指定分类
+const scrollToCategory = (category) => {
+  const targetSection = document.querySelector(`.category-section[data-category="${category}"]`)
+  if (targetSection) {
+    const offsetTop = targetSection.getBoundingClientRect().top + y.value - 72
+    window.scrollTo({ top: offsetTop, behavior: 'smooth' })
+    activeCategory.value = category
+  }
+}
+
+// 辅助方法
+const formatUrl = (url) => {
+  if (!url) return '#'
+  return url.startsWith('http') ? url : `https://${url}`
+}
+
+const goToOfficial = (url) => {
+  const formatted = formatUrl(url)
+  if (formatted !== '#') window.open(formatted, '_blank')
+}
+
+// 数据加载完成后初始化高亮
 watch(
   groupedTools,
-  (newGroups) => {
-    if (newGroups.length && !selectedCategory.value) {
-      selectedCategory.value = newGroups[0].category
+  async (newGroups) => {
+    if (newGroups.length && !loading.value) {
+      await nextTick()
+      activeCategory.value = newGroups[0].category
+      updateActiveCategory() // 立即校正高亮
     }
   },
   { immediate: true },
 )
-
-// 通用方法
-const formatUrl = (url) => {
-  if (!url) return '#'
-  if (url.startsWith('http://') || url.startsWith('https://')) return url
-  return `https://${url}`
-}
-
-// 整行/整卡片点击跳转官网
-const goToOfficial = (url) => {
-  const formattedUrl = formatUrl(url)
-  if (formattedUrl !== '#') {
-    window.open(formattedUrl, '_blank')
-  }
-}
-
-// 加载 JSON 数据
-const loadToolData = async () => {
-  loading.value = true
-  try {
-    const response = await fetch('/vra/resource/data.json')
-    if (!response.ok) throw new Error(`HTTP error ${response.status}`)
-    const data = await response.json()
-    toolList.value = data
-  } catch (error) {
-    console.error('加载工具数据失败：', error)
-    toolList.value = []
-  } finally {
-    loading.value = false
-  }
-}
-
-onMounted(() => {
-  loadToolData()
-})
 </script>
 
 <style scoped>
@@ -137,19 +170,22 @@ onMounted(() => {
 .res-content {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 36px 24px;
 }
 
-/* 分类Tab样式 - 保留原有样式 */
+/* 分类Tab导航样式 */
 .category-tabs {
   display: flex;
   gap: 8px;
   overflow-x: auto;
   scrollbar-width: thin;
-  padding-bottom: 12px;
-  margin-bottom: 28px;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
+  position: fixed;
+  top: 64px;
+  background-color: transparent;
+  backdrop-filter: blur(12px);
+  z-index: 99;
 }
 .tab-item {
   flex-shrink: 0;
@@ -158,6 +194,7 @@ onMounted(() => {
   font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
+  font-weight: 600;
   transition: all 0.2s;
   cursor: pointer;
 }
@@ -167,10 +204,24 @@ onMounted(() => {
   border-color: var(--el-active);
 }
 
+/* 分类区块样式 */
+.category-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 80px; /* 滚动定位时的偏移量，避免被导航栏遮挡 */
+}
+
+.category-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  padding-left: 12px;
+  border-left: 4px solid var(--el-active);
+  color: var(--text-primary);
+}
+
 /* 卡片容器 - 网格布局核心样式 */
 .card-container {
   display: grid;
-  /* 响应式列数：最小280px一列，自动填充，列间距20px */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   margin-top: 8px;
@@ -184,9 +235,7 @@ onMounted(() => {
   gap: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
-  height: 100%; /* 保证同行列高一致 */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: var(--el-active);
+  height: 100%;
 }
 .tool-card:hover {
   background: var(--bg-surface);
@@ -205,7 +254,7 @@ onMounted(() => {
   object-fit: contain;
   border-radius: 0;
   padding: 4px;
-  flex-shrink: 0; /* 防止图标压缩 */
+  flex-shrink: 0;
 }
 .title-link {
   color: var(--text-primary);
@@ -222,7 +271,7 @@ onMounted(() => {
 
 /* 卡片主体：描述 */
 .card-body {
-  flex: 1; /* 让描述区域填充中间空间，底部元素靠下 */
+  flex: 1;
 }
 .card-desc {
   margin: 0;
@@ -240,7 +289,7 @@ onMounted(() => {
   align-items: center;
   justify-content: space-between;
   padding-top: 8px;
-  margin-top: auto; /* 固定在卡片底部 */
+  margin-top: auto;
 }
 .file-size {
   color: var(--text-secondary);
@@ -262,7 +311,7 @@ onMounted(() => {
   transform: translateY(-1px);
 }
 
-/* 空状态/加载状态样式 - 适配卡片布局 */
+/* 空状态/加载状态样式 */
 .empty-state,
 .loading-state {
   text-align: center;
@@ -274,7 +323,6 @@ onMounted(() => {
   margin-top: 20px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #e2e8f0;
-  grid-column: 1 / -1; /* 跨所有列显示 */
 }
 
 /* 响应式适配 */
@@ -288,6 +336,10 @@ onMounted(() => {
   .tab-item {
     padding: 6px 14px;
     font-size: 14px;
+  }
+  .category-title {
+    font-size: 18px;
+    margin-bottom: 16px;
   }
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -303,10 +355,12 @@ onMounted(() => {
   .title-link {
     font-size: 15px;
   }
-
   .disk-btn {
     padding: 4px 8px;
     font-size: 12px;
+  }
+  .category-section {
+    margin-bottom: 32px;
   }
 }
 </style>

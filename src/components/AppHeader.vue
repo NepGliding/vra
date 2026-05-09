@@ -36,7 +36,7 @@
         ></path>
       </svg> -->
     </div>
-    <div
+    <!-- <div
       v-if="isDesktop"
       class="switch-other-popover"
       ref="popoverRef"
@@ -49,7 +49,7 @@
       class="switch-other-drawer"
       :class="{ show: drawerVisible }"
       ref="drawerRef"
-    ></div>
+    ></div> -->
 
     <div v-if="!isDesktop" class="menu-container" ref="menuContainerRef">
       <button
@@ -217,6 +217,7 @@ const indicatorStyle = computed(() => {
   padding: 16px 0;
   background-color: transparent;
   box-shadow: 0 1px 0 0 #46433f83;
+  backdrop-filter: blur(12px);
 }
 
 .theme-toggle {
