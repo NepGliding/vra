@@ -20,19 +20,17 @@ useViewTransitionRouter()
 <style scoped>
 .header-top {
   position: fixed;
-  top: 0;
-  left: 16px;
-  right: 16px;
+  left: 0;
+  right: 0;
   z-index: 10;
-  view-transition-name: none; /* 不让头部参与过渡 */
+  view-transition-name: none;
 }
 
 .main-center {
   z-index: 1;
   position: relative;
-  /* overflow: hidden; */
   min-height: 100vh;
-  padding-top: calc(var(--header-height, 60px) + 16px);
+  padding-top: calc(60px + 16px);
 }
 
 .child-view {

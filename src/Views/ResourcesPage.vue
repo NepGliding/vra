@@ -184,13 +184,12 @@ watch(
   position: fixed;
   top: 64px;
   background-color: transparent;
-  backdrop-filter: blur(12px);
+  background: var(--bg-surface);
   z-index: 99;
 }
 .tab-item {
   flex-shrink: 0;
   padding: 8px 20px;
-  border-radius: 0;
   font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
@@ -201,7 +200,6 @@ watch(
 .tab-item.active {
   color: var(--el-active);
   background: var(--bg-surface);
-  border-color: var(--el-active);
 }
 
 /* 分类区块样式 */

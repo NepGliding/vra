@@ -214,7 +214,7 @@ const indicatorStyle = computed(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0;
+  padding: 16px 16px;
   background-color: transparent;
   box-shadow: 0 1px 0 0 #46433f83;
   backdrop-filter: blur(12px);
