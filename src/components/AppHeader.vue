@@ -162,19 +162,6 @@ const toggleMenu = () => {
   setTimeout(() => (isToggling.value = false), 300)
 }
 //汉堡菜单全屏遮罩（只在移动端生效）
-//点击遮罩外部触发关闭遮罩
-// const menuMaskRef = ref(null)
-// const menuContainerRef = ref(null)
-// onClickOutside(
-//   menuMaskRef,
-//   () => {
-//     isMenuOpen.value = false
-//   },
-//   {
-//     ignore: [menuContainerRef],
-//   },
-// )
-//汉堡菜单全屏遮罩（只在移动端生效）
 const handleNavClick = (path) => {
   // 先关闭菜单
   isMenuOpen.value = false
@@ -215,7 +202,7 @@ const indicatorStyle = computed(() => {
   justify-content: space-between;
   align-items: center;
   padding: 16px 16px;
-  background-color: transparent;
+  background-color: var(--bg-base);
   box-shadow: 0 1px 0 0 #46433f83;
   backdrop-filter: blur(12px);
 }

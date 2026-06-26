@@ -1,9 +1,21 @@
-<template>
+<!-- <template>
   <header class="header-top">
     <AppHeader />
   </header>
   <main class="main-center">
     <router-view class="child-view" />
+  </main>
+</template> -->
+<template>
+  <header class="header-top">
+    <AppHeader />
+  </header>
+  <main class="main-center">
+    <router-view v-slot="{ Component }">
+      <transition name="page" mode="out-in">
+        <component :is="Component" class="child-view" />
+      </transition>
+    </router-view>
   </main>
 </template>
 
@@ -12,7 +24,7 @@ import AppHeader from '@/components/AppHeader.vue'
 import { useViewTransitionRouter } from '@/utils/useViewTransitionRouter'
 
 // 启用 View Transitions 路由过渡
-useViewTransitionRouter()
+// useViewTransitionRouter()
 </script>
 
 <style scoped>

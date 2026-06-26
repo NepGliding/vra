@@ -66,11 +66,19 @@ body {
   color: var(--text-primary);
 }
 
-::view-transition-old(page) {
-  animation: slide-out 0.6s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+/* 进入和离开的过渡状态 */
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s ease;
 }
-::view-transition-new(page) {
-  animation: slide-in 0.6s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+.page-enter-from {
+  opacity: 1;
+  transform: translateX(-30px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 @keyframes slide-out {
   0% {

@@ -2,7 +2,7 @@
   <div class="res-main">
     <div class="res-content">
       <!-- 顶部横向 Tab（分类导航）- 仅用于导航滚动 -->
-      <div class="category-tabs" v-if="groupedTools.length">
+      <!-- <div class="category-tabs" v-if="groupedTools.length">
         <div
           v-for="group in groupedTools"
           :key="group.category"
@@ -12,7 +12,7 @@
         >
           {{ group.category }}
         </div>
-      </div>
+      </div> -->
 
       <!-- 连续展示所有分类的工具（不进行筛选分离） -->
       <div v-if="!loading && groupedTools.length">
@@ -62,10 +62,6 @@
           </div>
         </div>
       </div>
-
-      <!-- 空状态/加载状态 -->
-      <div v-else-if="!loading && !groupedTools.length" class="empty-state">暂无工具资源</div>
-      <div v-if="loading" class="loading-state">加载工具列表中...</div>
     </div>
   </div>
 </template>
@@ -307,20 +303,6 @@ watch(
 }
 .disk-btn:hover {
   transform: translateY(-1px);
-}
-
-/* 空状态/加载状态样式 */
-.empty-state,
-.loading-state {
-  text-align: center;
-  padding: 80px 20px;
-  font-size: 15px;
-  color: var(--text-secondary);
-  background: var(--bg-surface);
-  border-radius: 0;
-  margin-top: 20px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
 }
 
 /* 响应式适配 */
