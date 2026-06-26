@@ -2,9 +2,7 @@
   <header class="header-top">
     <AppHeader />
   </header>
-
   <main class="main-center">
-    <!-- 直接渲染，动画由 View Transitions 接管 -->
     <router-view class="child-view" />
   </main>
 </template>
@@ -35,8 +33,8 @@ useViewTransitionRouter()
 
 .child-view {
   view-transition-name: page;
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 </style>

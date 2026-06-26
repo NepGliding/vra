@@ -21,7 +21,7 @@ export function useViewTransitionRouter(router = useRouter()) {
         ? originalReplace.call(router, to, options)
         : originalPush.call(router, to, options)
     }
-
+    // window.scrollTo({ top: 0, behavior: 'instant' })
     await document.startViewTransition(async () => {
       if (replace) {
         await originalReplace.call(router, to, options)
