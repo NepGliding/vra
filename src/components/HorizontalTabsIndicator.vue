@@ -201,4 +201,10 @@ onMounted(() => {
   color: var(--text-primary);
   font-weight: 600;
 }
+
+@media (width<=1024px) {
+  .tab-item {
+    padding: 12px;
+  }
+}
 </style>

@@ -7,8 +7,8 @@
           :items="tabItems"
           :active-key="activeCategory"
           indicator-color="var(--el-active)"
-          indicator-height="4px"
-          indicator-width="40px"
+          indicator-height="3px"
+          indicator-width="64px"
           @click="scrollToCategory"
         />
       </div>

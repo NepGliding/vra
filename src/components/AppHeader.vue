@@ -57,7 +57,7 @@
       </button>
     </div>
     <div v-if="isDesktop" class="perch-btn-desktop">
-      <ActiveIndicatorMenu
+      <VerticalTabsIndicator
         :items="navItems"
         :active-key="route.path"
         indicator-color="var(--bg-hover)"
@@ -74,7 +74,7 @@
 import { ref, nextTick, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useBreakpoints, useTimeoutFn, onClickOutside } from '@vueuse/core'
-import ActiveIndicatorMenu from '@/components/ActiveIndicatorMenu.vue'
+import VerticalTabsIndicator from '@/components/VerticalTabsIndicator.vue'
 
 const router = useRouter()
 const route = useRoute()
