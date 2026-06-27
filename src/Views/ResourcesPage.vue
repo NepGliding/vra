@@ -197,12 +197,13 @@ onBeforeUnmount(() => {
 
 // 数据加载完成后初始化高亮
 watch(
-  groupedTools,
-  async (newGroups) => {
-    if (newGroups.length && !loading.value) {
-      await nextTick()
-      activeCategory.value = newGroups[0].category
-      updateActiveCategory()
+  [groupedTools, loading],
+  ([newGroups, isLoading]) => {
+    if (newGroups.length && !isLoading) {
+      nextTick(() => {
+        activeCategory.value = newGroups[0].category
+        // 不再调用 updateActiveCategory()
+      })
     }
   },
   { immediate: true },

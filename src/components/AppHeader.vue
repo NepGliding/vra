@@ -171,12 +171,12 @@ const indicatorStyle = computed(() => {
 
 <style scoped>
 .header-main {
-  height: 64px;
+  height: 58px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 16px;
-  background-color: var(--bg-base);
+  background: var(--bg-base);
 }
 
 .theme-toggle {
