@@ -67,18 +67,17 @@ body {
 }
 
 /* 进入和离开的过渡状态 */
-
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.36s ease;
 }
 .page-enter-from {
-  opacity: 1;
-  transform: translateX(-30px);
+  opacity: 0;
+  transform: translateX(-80px);
 }
 .page-leave-to {
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateX(80px);
 }
 @keyframes slide-out {
   0% {

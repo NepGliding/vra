@@ -40,7 +40,7 @@ import { useViewTransitionRouter } from '@/utils/useViewTransitionRouter'
   z-index: 1;
   position: relative;
   min-height: 100vh;
-  padding-top: calc(60px + 16px);
+  padding-top: 64px;
 }
 
 .child-view {

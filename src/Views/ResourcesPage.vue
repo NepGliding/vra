@@ -2,7 +2,7 @@
   <div class="res-main">
     <div class="res-content">
       <!-- 顶部横向 Tab（分类导航）- 仅用于导航滚动 -->
-      <!-- <div class="category-tabs" v-if="groupedTools.length">
+      <div class="category-tabs" v-if="groupedTools.length">
         <div
           v-for="group in groupedTools"
           :key="group.category"
@@ -12,7 +12,7 @@
         >
           {{ group.category }}
         </div>
-      </div> -->
+      </div>
 
       <!-- 连续展示所有分类的工具（不进行筛选分离） -->
       <div v-if="!loading && groupedTools.length">
@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { computed, ref, nextTick, watch } from 'vue'
+import { computed, ref, nextTick, watch, onMounted } from 'vue'
 import { useFetch, useThrottleFn, useEventListener, useWindowScroll } from '@vueuse/core'
 
 // 数据获取
@@ -90,7 +90,7 @@ const activeCategory = ref('')
 // 获取窗口滚动位置
 const { y } = useWindowScroll()
 
-// 节流更新高亮分类
+// 更新高亮分类
 const updateActiveCategory = () => {
   const sections = document.querySelectorAll('.category-section')
   if (!sections.length) return
@@ -144,6 +144,10 @@ const goToOfficial = (url) => {
   if (formatted !== '#') window.open(formatted, '_blank')
 }
 
+onMounted(() => {
+  console.log('校正高亮')
+})
+
 // 数据加载完成后初始化高亮
 watch(
   groupedTools,
@@ -166,20 +170,20 @@ watch(
 .res-content {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 36px 24px;
+  padding: 0 24px;
 }
 
 /* 分类Tab导航样式 */
 .category-tabs {
+  width: 400px;
   display: flex;
   gap: 8px;
   overflow-x: auto;
   scrollbar-width: thin;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
-  position: fixed;
+  position: sticky;
   top: 64px;
-  background-color: transparent;
   background: var(--bg-surface);
   z-index: 99;
 }

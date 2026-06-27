@@ -24,33 +24,7 @@
         />
       </svg>
       <span class="switch-other-span">Just a Vite App </span>
-      <!-- <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="16"
-        height="16"
-        fill="var(--text-secondary)"
-      >
-        <path
-          d="M18.2072 9.0428 12.0001 2.83569 5.793 9.0428 7.20721 10.457 12.0001 5.66412 16.793 10.457 18.2072 9.0428ZM5.79285 14.9572 12 21.1643 18.2071 14.9572 16.7928 13.543 12 18.3359 7.20706 13.543 5.79285 14.9572Z"
-        ></path>
-      </svg> -->
     </div>
-    <!-- <div
-      v-if="isDesktop"
-      class="switch-other-popover"
-      ref="popoverRef"
-      :class="{ show: popoverVisible }"
-      @mouseenter="showPopover"
-      @mouseleave="delayHidePopover"
-    ></div>
-    <div
-      v-if="!isDesktop"
-      class="switch-other-drawer"
-      :class="{ show: drawerVisible }"
-      ref="drawerRef"
-    ></div> -->
-
     <div v-if="!isDesktop" class="menu-container" ref="menuContainerRef">
       <button
         class="hamburger"
@@ -203,14 +177,14 @@ const indicatorStyle = computed(() => {
   align-items: center;
   padding: 16px 16px;
   background-color: var(--bg-base);
-  box-shadow: 0 1px 0 0 #46433f83;
-  backdrop-filter: blur(12px);
+  /* box-shadow: 0 1px 0 0 #46433f83;
+  backdrop-filter: blur(12px); */
 }
 
 .theme-toggle {
   position: absolute;
-  top: 80px;
-  right: 10%;
+  top: 20px;
+  right: 20%;
   color: var(--text-primary);
 }
 
@@ -392,9 +366,6 @@ const indicatorStyle = computed(() => {
   z-index: 1;
 }
 
-@media (width>=1024px) {
-  .header-main {
-    box-shadow: none;
-  }
-}
+/* @media (width>=1024px) {
+} */
 </style>
