@@ -8,7 +8,7 @@
           :active-key="activeCategory"
           indicator-color="var(--el-active)"
           indicator-height="3px"
-          indicator-width="64px"
+          :indicator-width="indicatorWidth"
           @click="scrollToCategory"
         />
       </div>
@@ -67,8 +67,19 @@
 
 <script setup>
 import { computed, ref, nextTick, watch, onBeforeUnmount } from 'vue'
-import { useFetch, useThrottleFn, useEventListener, useWindowScroll } from '@vueuse/core'
+import {
+  useFetch,
+  useThrottleFn,
+  useEventListener,
+  useWindowScroll,
+  useBreakpoints,
+} from '@vueuse/core'
 import HorizontalTabsIndicator from '@/components/HorizontalTabsIndicator.vue'
+
+const breakpoints = { mobile: 0, tablet: 768, desktop: 1024 }
+const screens = useBreakpoints(breakpoints)
+const isMobile = screens.smaller('tablet')
+const indicatorWidth = computed(() => (isMobile.value ? '40px' : '64px'))
 
 // 数据获取
 const { data: toolList, isFetching: loading } = useFetch('/vra/resource/data.json').json()
