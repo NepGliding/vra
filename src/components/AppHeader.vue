@@ -47,30 +47,25 @@
     >
       <button
         v-for="(item, index) in navItems"
-        :key="item.path"
+        :key="item.key"
         class="page-btn-mobile"
-        :class="{ 'page-btn-active': route.path === item.path }"
+        :class="{ 'page-btn-active': route.path === item.key }"
         :style="{ '--delay': `${index * 0.1}s` }"
-        @click="handleNavClick(item.path)"
+        @click="handleNavClick(item.key)"
       >
-        {{ item.name }}
+        {{ item.label }}
       </button>
     </div>
     <div v-if="isDesktop" class="perch-btn-desktop">
-      <div class="button-group">
-        <!-- 高亮指示器元素 -->
-        <div class="active-indicator" :style="indicatorStyle"></div>
-        <button
-          v-for="(item, index) in navItems"
-          :key="item.path"
-          :ref="(el) => setButtonRef(el, index)"
-          class="page-btn-desktop"
-          :class="{ 'page-btn-active': route.path === item.path }"
-          @click="router.push(item.path)"
-        >
-          {{ item.name }}
-        </button>
-      </div>
+      <ActiveIndicatorMenu
+        :items="navItems"
+        :active-key="route.path"
+        indicator-color="var(--bg-hover)"
+        indicator-width="4px"
+        position="right"
+        offset="16px"
+        @click="handleDesktopNav"
+      />
     </div>
   </div>
 </template>
@@ -79,15 +74,20 @@
 import { ref, nextTick, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useBreakpoints, useTimeoutFn, onClickOutside } from '@vueuse/core'
+import ActiveIndicatorMenu from '@/components/ActiveIndicatorMenu.vue'
 
 const router = useRouter()
 const route = useRoute()
 
 const navItems = [
-  { path: '/', name: '资源页' },
-  { path: '/article', name: '文章页' },
-  { path: '/interesting', name: ' Interesting' },
+  { key: '/', label: '资源页' },
+  { key: '/article', label: '文章页' },
+  { key: '/interesting', label: ' Interesting' },
 ]
+
+const handleDesktopNav = (item) => {
+  router.push(item.key)
+}
 
 // ---------- 响应式断点 ----------
 const breakpoints = { mobile: 0, tablet: 768, desktop: 1024 }

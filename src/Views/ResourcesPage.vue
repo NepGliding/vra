@@ -2,16 +2,15 @@
   <div class="res-main">
     <div class="res-content">
       <!-- 顶部横向 Tab（分类导航）- 仅用于导航滚动 -->
-      <div class="category-tabs" v-if="groupedTools.length">
-        <div
-          v-for="group in groupedTools"
-          :key="group.category"
-          class="tab-item"
-          :class="{ active: activeCategory === group.category }"
-          @click="scrollToCategory(group.category)"
-        >
-          {{ group.category }}
-        </div>
+      <div class="tabs-wrapper" v-if="groupedTools.length">
+        <HorizontalTabsIndicator
+          :items="tabItems"
+          :active-key="activeCategory"
+          indicator-color="var(--el-active)"
+          indicator-height="4px"
+          indicator-width="40px"
+          @click="scrollToCategory"
+        />
       </div>
 
       <!-- 连续展示所有分类的工具（不进行筛选分离） -->
@@ -67,8 +66,9 @@
 </template>
 
 <script setup>
-import { computed, ref, nextTick, watch, onMounted } from 'vue'
+import { computed, ref, nextTick, watch, onBeforeUnmount } from 'vue'
 import { useFetch, useThrottleFn, useEventListener, useWindowScroll } from '@vueuse/core'
+import HorizontalTabsIndicator from '@/components/HorizontalTabsIndicator.vue'
 
 // 数据获取
 const { data: toolList, isFetching: loading } = useFetch('/vra/resource/data.json').json()
@@ -84,18 +84,25 @@ const groupedTools = computed(() => {
   return Array.from(groupsMap.values())
 })
 
-// 当前高亮的分类
-const activeCategory = ref('')
+// 计算 tabItems（用于组件）
+const tabItems = computed(() => {
+  return groupedTools.value.map((group) => ({
+    key: group.category,
+    label: group.category,
+  }))
+})
 
-// 获取窗口滚动位置
 const { y } = useWindowScroll()
+const activeCategory = ref('')
+const isScrolling = ref(false) // 滚动动画锁定标志
 
-// 更新高亮分类
+// 更新高亮分类（滚动过程中跳过）
 const updateActiveCategory = () => {
+  if (isScrolling.value) return // 关键：滚动期间不更新
   const sections = document.querySelectorAll('.category-section')
   if (!sections.length) return
 
-  const viewportTop = y.value + 80 // 偏移量（导航栏高度）
+  const viewportTop = y.value + 80
   let currentSection = null
   let minDistance = Infinity
 
@@ -119,19 +126,84 @@ const updateActiveCategory = () => {
 
 const throttledUpdate = useThrottleFn(updateActiveCategory, 100)
 
-// 监听滚动与窗口尺寸变化（自动绑定/卸载）
-useEventListener('scroll', throttledUpdate)
-useEventListener('resize', throttledUpdate)
+// ---------- 滚动结束处理（scrollend 事件） ----------
+let scrollEndHandler = null
+let fallbackTimer = null
 
-// 滚动到指定分类
-const scrollToCategory = (category) => {
-  const targetSection = document.querySelector(`.category-section[data-category="${category}"]`)
-  if (targetSection) {
-    const offsetTop = targetSection.getBoundingClientRect().top + y.value - 72
-    window.scrollTo({ top: offsetTop, behavior: 'smooth' })
-    activeCategory.value = category
-  }
+// 滚动结束后的回调（解锁并校正）
+const onScrollEnd = () => {
+  // 移除监听器（once 方式会自动移除，但为了安全也手动清理）
+  window.removeEventListener('scrollend', scrollEndHandler)
+  clearTimeout(fallbackTimer)
+  isScrolling.value = false
+  updateActiveCategory() // 校正高亮
 }
+
+// 滚动到指定分类（点击 Tab 触发）
+const scrollToCategory = (item) => {
+  const category = item.key
+  const targetSection = document.querySelector(`.category-section[data-category="${category}"]`)
+  if (!targetSection) return
+
+  // 1. 立即高亮点击的分类（指示器立刻跳转）
+  activeCategory.value = category
+
+  // 2. 锁定滚动更新
+  isScrolling.value = true
+
+  // 3. 执行平滑滚动
+  const offsetTop = targetSection.getBoundingClientRect().top + y.value - 72
+  window.scrollTo({ top: offsetTop, behavior: 'smooth' })
+
+  // 4. 清除之前的监听和定时器（防止重叠）
+  window.removeEventListener('scrollend', scrollEndHandler)
+  clearTimeout(fallbackTimer)
+
+  // 5. 使用 scrollend 事件（现代浏览器）
+  if ('onscrollend' in window) {
+    scrollEndHandler = onScrollEnd
+    window.addEventListener('scrollend', scrollEndHandler, { once: true })
+  }
+
+  // 6. 降级方案：如果 scrollend 未触发（例如某些浏览器或用户快速中断），用定时器兜底
+  fallbackTimer = setTimeout(() => {
+    // 如果仍然在滚动状态，强制结束
+    if (isScrolling.value) {
+      window.removeEventListener('scrollend', scrollEndHandler)
+      isScrolling.value = false
+      updateActiveCategory()
+    }
+  }, 800) // 平滑滚动一般 500~800ms，可根据实际情况调整
+}
+
+// ---------- 组件生命周期 ----------
+// 清理所有监听和定时器
+onBeforeUnmount(() => {
+  window.removeEventListener('scrollend', scrollEndHandler)
+  clearTimeout(fallbackTimer)
+  // 如果有使用 useEventListener 的 scroll 监听，它会自动清理（useEventListener 自动管理）
+})
+
+// 数据加载完成后初始化高亮
+watch(
+  groupedTools,
+  async (newGroups) => {
+    if (newGroups.length && !loading.value) {
+      await nextTick()
+      activeCategory.value = newGroups[0].category
+      updateActiveCategory()
+    }
+  },
+  { immediate: true },
+)
+
+// 窗口变化时更新（但不要干扰滚动动画）
+useEventListener('resize', () => {
+  if (!isScrolling.value) updateActiveCategory()
+})
+
+// 滚动事件监听（使用 useEventListener 自动绑定/卸载）
+useEventListener('scroll', throttledUpdate)
 
 // 辅助方法
 const formatUrl = (url) => {
@@ -143,23 +215,6 @@ const goToOfficial = (url) => {
   const formatted = formatUrl(url)
   if (formatted !== '#') window.open(formatted, '_blank')
 }
-
-onMounted(() => {
-  console.log('校正高亮')
-})
-
-// 数据加载完成后初始化高亮
-watch(
-  groupedTools,
-  async (newGroups) => {
-    if (newGroups.length && !loading.value) {
-      await nextTick()
-      activeCategory.value = newGroups[0].category
-      updateActiveCategory() // 立即校正高亮
-    }
-  },
-  { immediate: true },
-)
 </script>
 
 <style scoped>
@@ -174,31 +229,13 @@ watch(
 }
 
 /* 分类Tab导航样式 */
-.category-tabs {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+.tabs-wrapper {
   position: sticky;
   top: 64px;
   background: var(--bg-base);
   z-index: 99;
-}
-.tab-item {
-  flex-shrink: 0;
-  padding: 14px 26px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-primary);
-  font-weight: 500;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-.tab-item.active {
-  color: var(--el-active);
-  background: var(--BLACK_WHITE);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
 }
 
 /* 分类区块样式 */
