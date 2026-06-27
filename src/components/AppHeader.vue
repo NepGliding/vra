@@ -177,8 +177,6 @@ const indicatorStyle = computed(() => {
   align-items: center;
   padding: 16px 16px;
   background-color: var(--bg-base);
-  /* box-shadow: 0 1px 0 0 #46433f83;
-  backdrop-filter: blur(12px); */
 }
 
 .theme-toggle {

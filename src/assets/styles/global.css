@@ -20,47 +20,31 @@
 } */
 
 :root {
-  /* --bg-base: #dcdddf; */
-  --bg-base: #e4e4e7;
-  --bg-surface: #ffffff;
+  --bg-base: #eef1f1;
   --bg-sidebar: #fcfcfc;
   --bg-hover: #0078d6;
   --text-primary: #000000;
   --text-secondary: #757575;
-  --el-active: #0078d4;
+  --el-active: #0078d6;
+  --BLACK_WHITE: #ffffff;
 }
 
 .dark {
   --bg-base: #131313;
-  --bg-surface: #2d2d2d;
   --bg-sidebar: #18181b;
   --bg-hover: #4cc2ff;
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
   --el-active: #4cc2ff;
+  --BLACK_WHITE: #2d2d2d;
 }
 
 html,
 body {
-  color: var(--text-primary);
   margin: 0;
   padding: 0;
   background: var(--bg-base);
 }
-/* 
-body {
-  background: linear-gradient(-180deg, #eeeeee 0%, #e2e2e2 48%, #d0d0d1 99%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.dark body {
-  background: linear-gradient(180deg, #232324 0%, #18181a 50%, #1a1a1b 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-} */
 
 #app {
   color: var(--text-primary);
@@ -78,30 +62,6 @@ body {
 .page-leave-to {
   opacity: 0;
   transform: translateX(80px);
-}
-@keyframes slide-out {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-}
-@keyframes slide-in {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-::view-transition-old(page),
-::view-transition-new(page) {
-  z-index: 2;
 }
 
 button {

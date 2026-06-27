@@ -45,8 +45,6 @@ import { useViewTransitionRouter } from '@/utils/useViewTransitionRouter'
 
 .child-view {
   view-transition-name: page;
-  /* position: absolute; */
   width: 100%;
-  /* overflow: hidden; */
 }
 </style>

@@ -175,7 +175,6 @@ watch(
 
 /* 分类Tab导航样式 */
 .category-tabs {
-  width: 400px;
   display: flex;
   gap: 8px;
   overflow-x: auto;
@@ -184,26 +183,27 @@ watch(
   -webkit-overflow-scrolling: touch;
   position: sticky;
   top: 64px;
-  background: var(--bg-surface);
+  background: var(--bg-base);
   z-index: 99;
 }
 .tab-item {
   flex-shrink: 0;
-  padding: 8px 20px;
+  padding: 14px 26px;
   font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.2s;
   cursor: pointer;
 }
 .tab-item.active {
   color: var(--el-active);
-  background: var(--bg-surface);
+  background: var(--BLACK_WHITE);
 }
 
 /* 分类区块样式 */
 .category-section {
+  margin-top: 16px;
   margin-bottom: 48px;
   scroll-margin-top: 80px; /* 滚动定位时的偏移量，避免被导航栏遮挡 */
 }
@@ -236,7 +236,7 @@ watch(
   height: 100%;
 }
 .tool-card:hover {
-  background: var(--bg-surface);
+  background: var(--BLACK_WHITE);
 }
 
 /* 卡片头部：图标+名称 */
