@@ -79,7 +79,7 @@ import HorizontalTabsIndicator from '@/components/HorizontalTabsIndicator.vue'
 const breakpoints = { mobile: 0, tablet: 768, desktop: 1024 }
 const screens = useBreakpoints(breakpoints)
 const isMobile = screens.smaller('tablet')
-const indicatorWidth = computed(() => (isMobile.value ? '40px' : '64px'))
+const indicatorWidth = computed(() => (isMobile.value ? '40px' : '52px'))
 
 // 数据获取
 const { data: toolList, isFetching: loading } = useFetch('/vra/resource/data.json').json()
@@ -163,7 +163,7 @@ const scrollToCategory = (item) => {
   isScrolling.value = true
 
   // 3. 执行平滑滚动
-  const offsetTop = targetSection.getBoundingClientRect().top + y.value - 72
+  const offsetTop = targetSection.getBoundingClientRect().top + y.value - 128
   window.scrollTo({ top: offsetTop, behavior: 'smooth' })
 
   // 4. 清除之前的监听和定时器（防止重叠）
@@ -184,7 +184,7 @@ const scrollToCategory = (item) => {
       isScrolling.value = false
       updateActiveCategory()
     }
-  }, 800) // 平滑滚动一般 500~800ms，可根据实际情况调整
+  }, 500) // 平滑滚动一般 500~800ms，可根据实际情况调整
 }
 
 // ---------- 组件生命周期 ----------
@@ -251,7 +251,6 @@ const goToOfficial = (url) => {
 
 /* 分类区块样式 */
 .category-section {
-  margin-top: 16px;
   margin-bottom: 48px;
   scroll-margin-top: 80px; /* 滚动定位时的偏移量，避免被导航栏遮挡 */
 }

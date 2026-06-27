@@ -12,6 +12,16 @@ const router = createRouter({
       component: () => import('@/Views/InterestingPage.vue'),
     },
   ],
+  scrollBehavior() {
+    // 路由过渡动画持续时间（请与你项目中的 transition 时长保持一致）
+    const TRANSITION_DURATION = 360
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ top: 0 })
+      }, TRANSITION_DURATION)
+    })
+  },
 })
 
 export default router
