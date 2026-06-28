@@ -1,13 +1,7 @@
 <template>
   <div class="header-main">
-    <button @click="toggleDark" class="theme-toggle">切换主题调试{{ isDark ? '☀️' : '🌙' }}</button>
-    <div
-      class="switch-other"
-      ref="switchOtherRef"
-      @mouseenter="showPopover"
-      @mouseleave="delayHidePopover"
-      @click="toggleDrawer"
-    >
+    <!-- <button @click="toggleDark" class="theme-toggle">切换主题调试{{ isDark ? '☀️' : '🌙' }}</button> -->
+    <div class="switch-other" ref="switchOtherRef" @click="toggleDrawer">
       <svg
         width="24"
         height="24"
@@ -99,32 +93,6 @@ const isDesktop = screens.greaterOrEqual('desktop')
 import { useTheme } from '@/utils/useTheme'
 //主题切换
 const { isDark, toggleDark } = useTheme()
-
-// Other抽屉（只在移动端生效）
-const drawerVisible = ref(false)
-const drawerRef = ref(null)
-const toggleDrawer = () => {
-  if (isDesktop.value) return
-  drawerVisible.value = !drawerVisible.value
-}
-onClickOutside(drawerRef, () => {
-  drawerVisible.value = false
-})
-
-//Other弹窗悬停时弹出盒子（只在桌面端生效）
-const popoverVisible = ref(false)
-const { start: startHideTimer, stop: stopHideTimer } = useTimeoutFn(() => {
-  popoverVisible.value = false
-}, 150)
-const showPopover = () => {
-  if (!isDesktop.value) return
-  stopHideTimer()
-  popoverVisible.value = true
-}
-const delayHidePopover = () => {
-  if (!isDesktop.value) return
-  startHideTimer()
-}
 
 // 汉堡菜单（只在移动端生效）
 const isMenuOpen = ref(false)
@@ -324,7 +292,7 @@ const indicatorStyle = computed(() => {
 }
 
 .perch-btn-desktop {
-  width: 190px;
+  width: 210px;
   height: 140px;
   position: fixed;
   top: 16px;
@@ -341,7 +309,6 @@ const indicatorStyle = computed(() => {
   background: transparent;
   color: var(--text-secondary);
   text-align: right;
-  padding: 0 48px;
   transition: color 0.3s ease;
   cursor: pointer;
 }
@@ -364,6 +331,6 @@ const indicatorStyle = computed(() => {
   z-index: 1;
 }
 
-/* @media (width>=1024px) {
+/* @media (width<=1024px) {
 } */
 </style>

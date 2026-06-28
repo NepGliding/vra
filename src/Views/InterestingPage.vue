@@ -20,7 +20,7 @@ const randomImgUrl = ref(imgList[randomIndex])
 <style scoped>
 .img-container {
   width: 100%;
-  min-height: 100vh;
+  height: 1024px;
   display: flex;
   align-items: center;
   justify-content: center;

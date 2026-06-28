@@ -1,18 +1,16 @@
 <template>
   <div class="res-main">
-    <!-- 顶部横向 Tab（分类导航）- 仅用于导航滚动 -->
-    <div class="tabs-wrapper" v-if="groupedTools.length">
-      <HorizontalTabsIndicator
-        :items="tabItems"
-        :active-key="activeCategory"
-        indicator-color="var(--el-active)"
-        indicator-height="3px"
-        :indicator-width="indicatorWidth"
-        @click="scrollToCategory"
-      />
-    </div>
     <div class="res-content">
-      <!-- 连续展示所有分类的工具（不进行筛选分离） -->
+      <div class="tabs-wrapper" v-if="groupedTools.length">
+        <HorizontalTabsIndicator
+          :items="tabItems"
+          :active-key="activeCategory"
+          indicator-color="var(--el-active)"
+          indicator-height="3px"
+          :indicator-width="indicatorWidth"
+          @click="scrollToCategory"
+        />
+      </div>
       <div v-if="!loading && groupedTools.length">
         <div
           v-for="group in groupedTools"
@@ -230,7 +228,7 @@ const goToOfficial = (url) => {
 <style scoped>
 .res-main {
   width: 100%;
-  min-height: 100vh;
+  min-height: 120vh;
 }
 .res-content {
   max-width: 1400px;

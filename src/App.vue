@@ -20,21 +20,18 @@ import AppHeader from '@/components/AppHeader.vue'
 
 <style scoped>
 .header-top {
-  position: fixed;
+  position: sticky;
+  top: 0;
   left: 0;
-  right: 0;
   z-index: 10;
 }
 
 .main-center {
   z-index: 1;
   position: relative;
-  min-height: 100vh;
-  padding-top: 58px;
 }
 
 .child-view {
-  view-transition-name: page;
   width: 100%;
 }
 </style>
