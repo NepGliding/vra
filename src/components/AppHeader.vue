@@ -43,7 +43,7 @@
         v-for="(item, index) in navItems"
         :key="item.key"
         class="page-btn-mobile"
-        :class="{ 'page-btn-active': route.path === item.key }"
+        :class="{ 'page-btn-mobile-active': route.path === item.key }"
         :style="{ '--delay': `${index * 0.1}s` }"
         @click="handleNavClick(item.key)"
       >
@@ -286,6 +286,11 @@ const indicatorStyle = computed(() => {
   opacity: 0;
 }
 
+.page-btn-mobile-active {
+  color: var(--text-primary);
+  /* box-shadow: inset -4px 0 0 0 var(--el-active); */
+}
+
 .menu-full-mask.show .page-btn-mobile {
   opacity: 1;
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -314,10 +319,6 @@ const indicatorStyle = computed(() => {
 }
 
 .page-btn-desktop:hover {
-  color: var(--text-primary);
-}
-
-.page-btn-active {
   color: var(--text-primary);
 }
 

@@ -180,7 +180,7 @@ const scrollToCategory = (item) => {
       isScrolling.value = false
       updateActiveCategory()
     }
-  }, 500) // 平滑滚动一般 500~800ms，可根据实际情况调整
+  }, 600) // 平滑滚动一般 500~800ms，可根据实际情况调整
 }
 
 // ---------- 组件生命周期 ----------
