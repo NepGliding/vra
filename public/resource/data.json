@@ -5,7 +5,6 @@
     "desc": "n卡驱动网站",
     "officialUrl": "www.nvidia.cn/geforce/drivers/",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "硬件",
     "keywords": ["显卡检测", "GPU信息", "硬件工具", "轻量级"]
   },
@@ -15,7 +14,6 @@
     "desc": "a卡驱动网站",
     "officialUrl": "www.amd.com/zh-cn/support/download/drivers.html",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "硬件",
     "keywords": ["远程桌面"]
   },
@@ -25,7 +23,6 @@
     "desc": "Steam是游戏、讨论和创造游戏的最终目的地。",
     "officialUrl": "www.cpuid.com/softwares/cpu-z.html",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "游戏",
     "keywords": ["游戏平台"]
   },
@@ -35,7 +32,6 @@
     "desc": "一款集动态壁纸与静态壁纸于一身的壁纸软件，提供个性化的桌面美化效果",
     "officialUrl": "www.techpowerup.com/gpuz/",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "网站",
     "keywords": ["壁纸网站"]
   },
@@ -45,7 +41,6 @@
     "desc": "A complete, cross-platform solution to record, convert and stream audio and video.",
     "officialUrl": "ffmpeg.org",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "89.0M",
     "category": "系统",
     "keywords": ["视频处理"]
   },
@@ -55,7 +50,6 @@
     "desc": "专业的CPU、主板、内存硬件信息检测工具，精准显示硬件详细参数",
     "officialUrl": "www.cpuid.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "8.2M",
     "category": "硬件",
     "keywords": ["CPU检测", "硬件信息", "内存检测", "主板信息"]
   },
@@ -65,7 +59,6 @@
     "desc": "硬盘健康检测与性能测试工具，支持坏道扫描、温度监控",
     "officialUrl": "www.hdtune.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "12.4M",
     "category": "硬件",
     "keywords": ["硬盘检测", "坏道扫描", "存储监控", "硬件测试"]
   },
@@ -75,7 +68,6 @@
     "desc": "全能硬件信息检测与稳定性测试软件，覆盖全硬件组件检测",
     "officialUrl": "www.aida64.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "45.1M",
     "category": "硬件",
     "keywords": ["硬件检测", "稳定性测试", "传感器监控", "全平台检测"]
   },
@@ -85,7 +77,6 @@
     "desc": "跨平台社交聊天软件，支持文件传输、语音视频通话、朋友圈浏览",
     "officialUrl": "pc.weixin.qq.com",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "软件",
     "keywords": ["社交软件", "文件传输", "视频通话", "办公沟通"]
   },
@@ -95,7 +86,6 @@
     "desc": "全能办公套件，支持文档、表格、演示文稿编辑，兼容全格式文件",
     "officialUrl": "www.wps.cn",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "215.7M",
     "category": "软件",
     "keywords": ["办公软件", "文档编辑", "表格处理", "PDF工具"]
   },
@@ -105,7 +95,6 @@
     "desc": "免费专业视频剪辑软件，内置海量模板、特效、字幕自动生成功能",
     "officialUrl": "www.capcut.cn",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "320.5M",
     "category": "软件",
     "keywords": ["视频剪辑", "特效制作", "字幕工具", "自媒体创作"]
   },
@@ -115,7 +104,6 @@
     "desc": "高速下载工具，支持多协议下载、云盘同步、边下边播",
     "officialUrl": "www.xunlei.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "78.9M",
     "category": "软件",
     "keywords": ["下载工具", "高速下载", "云盘存储", "视频播放"]
   },
@@ -125,7 +113,6 @@
     "desc": "经典MOBA竞技网游，全球热门团队对抗游戏，丰富英雄与赛事体系",
     "officialUrl": "lol.qq.com",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "游戏",
     "keywords": ["MOBA游戏", "竞技网游", "团队对抗", "热门游戏"]
   },
@@ -135,7 +122,6 @@
     "desc": "开放世界冒险游戏，精美画风，丰富剧情与自由探索玩法",
     "officialUrl": "ys.mihoyo.com",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "游戏",
     "keywords": ["开放世界", "冒险游戏", "二次元", "角色扮演"]
   },
@@ -145,7 +131,6 @@
     "desc": "大型多人在线战术竞技型射击类沙盒游戏，百人跳伞求生玩法",
     "officialUrl": "pubg.com",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "游戏",
     "keywords": ["吃鸡游戏", "射击竞技", "沙盒游戏", "多人在线"]
   },
@@ -155,7 +140,6 @@
     "desc": "经典第一人称射击游戏，电竞标杆，硬核竞技对战体验",
     "officialUrl": "www.counter-strike.net",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "游戏",
     "keywords": ["FPS游戏", "电竞竞技", "射击对战", "经典游戏"]
   },
@@ -165,7 +149,6 @@
     "desc": "年轻人的二次元社区，提供动漫、游戏、知识、生活等全品类视频",
     "officialUrl": "www.bilibili.com",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "网站",
     "keywords": ["视频网站", "二次元", "知识学习", "弹幕社区"]
   },
@@ -175,7 +158,6 @@
     "desc": "中文互联网高质量问答社区，聚集各领域专业人士分享知识",
     "officialUrl": "www.zhihu.com",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "网站",
     "keywords": ["问答社区", "知识分享", "经验交流", "专业解答"]
   },
@@ -185,7 +167,6 @@
     "desc": "面向开发者的技术社区，分享编程、前端、后端、AI等技术干货",
     "officialUrl": "juejin.cn",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "网站",
     "keywords": ["技术社区", "编程学习", "开发者交流", "前端开发"]
   },
@@ -195,7 +176,6 @@
     "desc": "大容量云存储服务网站，支持文件备份、同步、在线预览",
     "officialUrl": "pan.baidu.com",
     "netDiskUrl": "false",
-    "fileSize": "false",
     "category": "网站",
     "keywords": ["云存储", "文件备份", "网盘服务", "在线预览"]
   },
@@ -205,7 +185,6 @@
     "desc": "专业磁盘分区管理工具，支持分区创建、删除、数据恢复",
     "officialUrl": "www.diskgenius.cn",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "35.6M",
     "category": "系统",
     "keywords": ["磁盘管理", "分区工具", "数据恢复", "系统维护"]
   },
@@ -215,7 +194,6 @@
     "desc": "开源系统优化清理工具，精简系统、修复故障、释放磁盘空间",
     "officialUrl": "www.chuyu.me",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "10.1M",
     "category": "系统",
     "keywords": ["系统优化", "垃圾清理", "系统修复", "轻量级工具"]
   },
@@ -225,7 +203,6 @@
     "desc": "高效软件卸载工具，强制卸载残留文件，清理注册表",
     "officialUrl": "geekuninstaller.com",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "6.8M",
     "category": "系统",
     "keywords": ["软件卸载", "清理残留", "注册表清理", "系统工具"]
   },
@@ -235,7 +212,6 @@
     "desc": "轻量级U盘启动制作工具，快速制作系统安装盘，兼容全系统",
     "officialUrl": "rufus.ie",
     "netDiskUrl": "cn.vuejs.org",
-    "fileSize": "5.3M",
     "category": "系统",
     "keywords": ["启动盘制作", "系统安装", "U盘工具", "轻量级"]
   }

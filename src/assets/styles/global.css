@@ -27,6 +27,7 @@
   --text-secondary: #757575;
   --el-active: #0078d6;
   --BLACK_WHITE: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
 }
 
 .dark {
@@ -37,6 +38,7 @@
   --text-secondary: #a1a1aa;
   --el-active: #4cc2ff;
   --BLACK_WHITE: #2d2d2d;
+  --border-color: rgba(255, 255, 255, 0.08);
 }
 
 html,

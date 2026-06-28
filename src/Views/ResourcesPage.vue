@@ -1,18 +1,17 @@
 <template>
   <div class="res-main">
+    <!-- 顶部横向 Tab（分类导航）- 仅用于导航滚动 -->
+    <div class="tabs-wrapper" v-if="groupedTools.length">
+      <HorizontalTabsIndicator
+        :items="tabItems"
+        :active-key="activeCategory"
+        indicator-color="var(--el-active)"
+        indicator-height="3px"
+        :indicator-width="indicatorWidth"
+        @click="scrollToCategory"
+      />
+    </div>
     <div class="res-content">
-      <!-- 顶部横向 Tab（分类导航）- 仅用于导航滚动 -->
-      <div class="tabs-wrapper" v-if="groupedTools.length">
-        <HorizontalTabsIndicator
-          :items="tabItems"
-          :active-key="activeCategory"
-          indicator-color="var(--el-active)"
-          indicator-height="3px"
-          :indicator-width="indicatorWidth"
-          @click="scrollToCategory"
-        />
-      </div>
-
       <!-- 连续展示所有分类的工具（不进行筛选分离） -->
       <div v-if="!loading && groupedTools.length">
         <div
@@ -52,7 +51,6 @@
 
               <!-- 卡片底部：网盘下载 -->
               <div class="card-footer" v-if="tool.netDiskUrl !== 'false'">
-                <span class="file-size">{{ tool.fileSize }}</span>
                 <a :href="formatUrl(tool.netDiskUrl)" target="_blank" class="disk-btn" @click.stop>
                   网盘下载
                 </a>
@@ -246,13 +244,11 @@ const goToOfficial = (url) => {
   top: 58px;
   background: var(--bg-base);
   z-index: 99;
-  padding: 4px 0;
-  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* 分类区块样式 */
 .category-section {
-  margin-bottom: 48px;
   scroll-margin-top: 80px; /* 滚动定位时的偏移量，避免被导航栏遮挡 */
 }
 
@@ -337,11 +333,6 @@ const goToOfficial = (url) => {
   padding-top: 8px;
   margin-top: auto;
 }
-.file-size {
-  color: var(--text-secondary);
-  font-size: 12px;
-  white-space: nowrap;
-}
 .disk-btn {
   display: inline-block;
   padding: 6px 12px;
@@ -359,15 +350,8 @@ const goToOfficial = (url) => {
 
 /* 响应式适配 */
 @media (max-width: 768px) {
-  .res-content {
-    padding: 16px;
-  }
   .category-tabs {
     margin-bottom: 20px;
-  }
-  .tab-item {
-    padding: 6px 14px;
-    font-size: 14px;
   }
   .category-title {
     font-size: 18px;
