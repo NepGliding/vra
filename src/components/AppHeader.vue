@@ -1,6 +1,6 @@
 <template>
   <div class="header-main">
-    <!-- <button @click="toggleDark" class="theme-toggle">切换主题调试{{ isDark ? '☀️' : '🌙' }}</button> -->
+    <button @click="toggleDark" class="theme-toggle">切换主题调试{{ isDark ? '☀️' : '🌙' }}</button>
     <div class="switch-other" ref="switchOtherRef" @click="toggleDrawer">
       <svg
         width="24"
@@ -17,7 +17,7 @@
           stroke-linejoin="round"
         />
       </svg>
-      <span class="switch-other-span">Just a Vite App </span>
+      <span class="switch-other-span">What can I say ?</span>
     </div>
     <div v-if="!isDesktop" class="menu-container" ref="menuContainerRef">
       <button
@@ -155,57 +155,16 @@ const indicatorStyle = computed(() => {
 }
 
 .switch-other {
-  width: 150px;
-  height: 44px;
+  width: 160px;
+  height: 26px;
   border-radius: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.switch-other-popover {
-  position: fixed;
-  top: 10px;
-  left: 16px;
-  width: 135px;
-  height: 44px;
-  border-radius: 22px;
-  border: 2px solid #46433f;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.38s ease;
-  z-index: 99;
-  background-color: var(--bg-base);
-}
-
-.switch-other-popover.show {
-  width: 300px;
-  height: 300px;
-  visibility: visible;
-  opacity: 1;
-}
-
-.switch-other-drawer {
-  position: fixed;
-  bottom: 0px;
-  left: 8px;
-  right: 8px;
-  height: 350px;
-  transform: translateY(100%);
-  border-radius: 22px;
-  border: 2px solid #3f3f46;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 100;
-  background-color: var(--bg-base);
-}
-
-.switch-other-drawer.show {
-  transform: translateY(0);
-  bottom: 5px;
-}
-
 .switch-other-span {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0 6px;
 }
