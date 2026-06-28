@@ -20,7 +20,7 @@
 } */
 
 :root {
-  --bg-base: #f3f3f2;
+  --bg-base: #f7f7f7;
   --bg-sidebar: #fcfcfc;
   --bg-hover: #0078d6;
   --text-primary: #000000;
@@ -43,7 +43,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg-base);
+  background-color: var(--bg-base);
 }
 
 #app {

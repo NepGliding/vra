@@ -243,7 +243,7 @@ const goToOfficial = (url) => {
 /* 分类Tab导航样式 */
 .tabs-wrapper {
   position: sticky;
-  top: 64px;
+  top: 58px;
   background: var(--bg-base);
   z-index: 99;
   padding: 4px 0;
